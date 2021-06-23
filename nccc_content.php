@@ -16,7 +16,7 @@
         </div>
       </div><!-- /.container-fluid -->
     </section>
-    <button onclick="viewNcccList()">test Me</button>
+
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
@@ -26,10 +26,57 @@
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">SKU LIST</h3>
-              </div>
-              <!-- /.card-header -->
+              </div><!-- /.card-header -->
+
               <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Brand</th>
+                        <th>Desc</th>
+                        <th>SizeSet</th>
+                        <th>StyleNo</th>
+                        <th>BuyerCode</th>
+                        <th>SKUType</th>
+                        <th>VendorCode</th>
+                        <th>SRP</th>
+                        <th>UPC</th>
+                        <th>Uom</th>
+                        <th>SKU</th>
+                        <th>Dept</th>
+                        <th>SubDept</th>
+                        <th>Class</th>
+                        <th>SubClass</th>
+                        <th>EntryDate</th>
+                        <th>PriceType</th>
+                    </tr>
+                </thead>
+                <!-- <tfoot>
+                    <tr>
+                      <th>Brand</th>
+                      <th>Desc</th>
+                      <th>SizeSet</th>
+                      <th>StyleNo</th>
+                      <th>BuyerCode</th>
+                      <th>SKUType</th>
+                      <th>VendorCode</th>
+                      <th>SRP</th>
+                      <th>UPC</th>
+                      <th>Uom</th>
+                      <th>SKU</th>
+                      <th>Dept</th>
+                      <th>SubDept</th>
+                      <th>Class</th>
+                      <th>SubClass</th>
+                      <th>EntryDate</th>
+                      <th>PriceType</th>
+                    </tr>
+                </tfoot> -->
+
+                <tbody id="displaysku"></tbody>
+            </table>
+
+                <!-- <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
                     <th>Rendering engine</th>
@@ -457,15 +504,25 @@
                     <th>CSS grade</th>
                   </tr>
                   </tfoot>
-                </table>
+                </table> -->
+
               </div>
               <!-- /.card-body -->
+
+
+
+
+
+
+
+
+
             </div>
             <!-- /.card -->
           </div>
           <!-- /.col -->
-
-          <div id="viewNcccList">asdf</div>
+          
+         <div id="displaysku"></div> 
 
         </div>
         <!-- /.row -->
