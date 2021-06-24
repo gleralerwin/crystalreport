@@ -28,9 +28,11 @@ function getskulist_nccc()
     $sql = 'SELECT * FROM tblSKU ORDER BY id ASC';
     $result = sqlsrv_query($nccc_conn, $sql);
 
+    $i=1;
     while($row = sqlsrv_fetch_array($result)){
         echo '
             <tr>
+                <td>'.$i++.'</td>
                 <td>'.$row['Brand'].'</td>
                 <td>'.$row['Descrip'].'</td>
                 <td>'.$row['SizeSet'].'</td>

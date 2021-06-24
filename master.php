@@ -25,6 +25,12 @@
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+
+ <!-- dataTables -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+  <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -289,6 +295,12 @@
                   <p>Sample datatables</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="test.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>testing</p>
+                </a>
+              </li>
             </ul>
           </li>
 
@@ -350,7 +362,7 @@
  
 
   <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">ifashion</a>.</strong>
+    <strong>Copyright &copy; 2014-2021 <a href="#">ifashion</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
       <b>Version</b> 3.1.0
@@ -370,10 +382,8 @@
 
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
-
 <!-- jQuery UI 1.11.4 -->
 <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
-
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
   $.widget.bridge('uibutton', $.ui.button)
@@ -406,6 +416,5 @@
 <script src="dist/js/pages/dashboard.js"></script>
 
 <script src="script.js"></script>
-
 </body>
 </html>

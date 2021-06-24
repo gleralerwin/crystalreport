@@ -28,14 +28,16 @@
                 <h3 class="card-title">SKU LIST</h3>
               </div><!-- /.card-header -->
 
-              <div id="display"></div> 
-
               <div class="card-body">
-              <table id="ncccTable" class="table table-bordered table-striped">
-              <button class="btn btn-sm btn-success" onclick="exportToExcel()">Export to Excel</button>
+              <table id="ncccTable" class="table table-bordered table-striped" style="width: 100%;">
+
+              <button class="btn btn-sm btn-success" onclick="#" style="margin-right: 10px;">Export to EXCEL</button>
+              <button class="btn btn-sm btn-info" onclick="#">Export to CSV</button>
+
               <br><br>
                 <thead>
                     <tr>
+                        <th>#</th>
                         <th>Brand</th>
                         <th>Desc</th>
                         <th>SizeSet</th>
@@ -54,6 +56,27 @@
                         <th>PriceType</th>
                     </tr>
                 </thead>
+                <tfoot>
+                  <tr>
+                        <th>#</th>
+                        <th>Brand</th>
+                        <th>Desc</th>
+                        <th>SizeSet</th>
+                        <th>StyleNo</th>
+                        <th>BuyerCode</th>
+                        <th>SKUType</th>
+                        <th>VendorCode</th>
+                        <th>SRP</th>
+                        <th>UPC</th>
+                        <th>Uom</th>
+                        <th>SKU</th>
+                        <th>Dept</th>
+                        <th>SubDept</th>
+                        <th>Class</th>
+                        <th>SubClass</th>
+                        <th>PriceType</th>
+                  </tr>
+              </tfoot>
                 <tbody id="nccc_list"></tbody>
             </table>
 

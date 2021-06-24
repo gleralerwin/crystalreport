@@ -36,15 +36,10 @@ fetch_rdslist();
 
 function exportToExcel()
 {
-    $.ajax({
-        url: 'ajax.php',
-        type: 'post',
-        dataType: 'json',
-        data:{function: 'getdata'},
-        success: function(data)
-        {
-            console.log(data);
-            alert('ok');
-        }
-    });
+    $('#example').DataTable( {
+        "processing": true,
+        "serverSide": true,
+        "ajax": "../assets/server_side/server_processing.php"
+    } );
 }
+exportToExcel();

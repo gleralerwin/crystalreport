@@ -31,7 +31,10 @@
 
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
-                <button class="btn btn-sm btn-success">Export to Excel</button>
+
+                <button class="btn btn-sm btn-success" onclick="#" style="margin-right: 10px;">Export to EXCEL</button>
+                <button class="btn btn-sm btn-info" onclick="#">Export to CSV</button>
+
                 <br><br>
                   <thead>
                   <tr>
@@ -51,6 +54,26 @@
                     <th>VendorCode</th>
                   </tr>
                   </thead>
+
+                  <tfoot>
+                  <tr>
+                    <th>SubDeptClass</th>
+                    <th>SKU</th>
+                    <th>UPC</th>
+                    <th>MFno</th>
+                    <th>StyleN0</th>
+                    <th>ItemDesc</th>
+                    <th>ShortDesc</th>
+                    <th>BrandName</th>
+                    <th>BuyerCode</th>
+                    <th>OrigPrice</th>
+                    <th>PriceType</th>
+                    <!-- <th>CreateDate</th> -->
+                    <th>IRMSName</th>
+                    <th>VendorCode</th>
+                  </tr>
+              </tfoot>
+
                   <tbody id="rdslist"></tbody>
                 </table>
 
