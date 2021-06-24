@@ -1,6 +1,6 @@
 //nccc sku list
 function fetch_nccc_list()
-{   
+{ 
     $.ajax({ 
         url: 'ajax.php',
         type: 'post',
@@ -36,5 +36,15 @@ fetch_rdslist();
 
 function exportToExcel()
 {
-    alert('hello');
+    $.ajax({
+        url: 'ajax.php',
+        type: 'post',
+        dataType: 'json',
+        data:{function: 'getdata'},
+        success: function(data)
+        {
+            console.log(data);
+            alert('ok');
+        }
+    });
 }

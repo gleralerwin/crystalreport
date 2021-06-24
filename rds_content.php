@@ -30,8 +30,8 @@
               <!-- /.card-header -->
 
               <div class="card-body">
-                <table class="table table-bordered table-striped">
-                <button class="btn btn-sm btn-success" onlclick="exportToExcel()">Export to Excel</button>
+                <table id="example1" class="table table-bordered table-striped">
+                <button class="btn btn-sm btn-success">Export to Excel</button>
                 <br><br>
                   <thead>
                   <tr>
@@ -53,7 +53,7 @@
                   </thead>
                   <tbody id="rdslist"></tbody>
                 </table>
-                
+
               </div>
               <!-- /.card-body -->
 

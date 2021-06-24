@@ -28,9 +28,11 @@
                 <h3 class="card-title">SKU LIST</h3>
               </div><!-- /.card-header -->
 
+              <div id="display"></div> 
+
               <div class="card-body">
-              <table class="table table-bordered table-striped">
-              <button class="btn btn-sm btn-success" onlclick="exportToExcel()">Export to Excel</button>
+              <table id="ncccTable" class="table table-bordered table-striped">
+              <button class="btn btn-sm btn-success" onclick="exportToExcel()">Export to Excel</button>
               <br><br>
                 <thead>
                     <tr>
@@ -63,8 +65,6 @@
           </div>
           <!-- /.col -->
           
-         <div id="displaysku"></div> 
-
         </div>
         <!-- /.row -->
       </div>
