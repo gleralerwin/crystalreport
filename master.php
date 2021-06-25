@@ -285,12 +285,6 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./pages/tables/data.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Sample datatables</p>
-                </a>
-              </li>
-              <li class="nav-item">
                 <a href="test.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>testing</p>

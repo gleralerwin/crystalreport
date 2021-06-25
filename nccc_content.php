@@ -17,6 +17,8 @@
       </div><!-- /.container-fluid -->
     </section>
 
+    <div id="display"></div>
+
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
@@ -29,10 +31,10 @@
               </div><!-- /.card-header -->
 
               <div class="card-body">
-              <table id="ncccTable" class="table table-bordered table-striped" style="width: 100%;">
+              <table class="table table-bordered table-striped" style="width: 100%;">
 
-              <button class="btn btn-sm btn-success" onclick="exportExcel()" style="margin-right: 10px;">Export to EXCEL</button>
-              <button class="btn btn-sm btn-info" onclick="#">Export to CSV</button>
+              <button class="btn btn-md btn-info" onclick="Nccc_RegExport()" style="margin-right: 10px;">Export To Excel ( REG )</button>
+              <button class="btn btn-md btn-success" onclick="Nccc_MdExport()">Export To Excel ( MD )</button>
 
               <br><br>
                 <thead>

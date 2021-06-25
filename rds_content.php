@@ -30,10 +30,10 @@
               <!-- /.card-header -->
 
               <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
+                <table class="table table-bordered table-striped">
 
-                <button class="btn btn-sm btn-success" onclick="#" style="margin-right: 10px;">Export to EXCEL</button>
-                <button class="btn btn-sm btn-info" onclick="#">Export to CSV</button>
+              <button class="btn btn-md btn-info" onclick="Rds_RegExport()" style="margin-right: 10px;">Export To Excel ( REG )</button>
+              <button class="btn btn-md btn-success" onclick="Rds_MdExport()">Export To Excel ( MD )</button>
 
                 <br><br>
                   <thead>

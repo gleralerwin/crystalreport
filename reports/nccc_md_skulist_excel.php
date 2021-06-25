@@ -1,9 +1,8 @@
 <?php
-include '../PHPExcel/Classes/PHPExcel.php';
-include '../PHPExcel/Classes/PHPExcel/IOFactory.php';
-include '../PHPExcel/Classes/PHPExcel/Writer/Excel5.php';
-
 include '../inc/nccc_db.php';
+include '../PHPExcel/Classes/PHPExcel.php';
+// include '../PHPExcel/Classes/PHPExcel/IOFactory.php';
+// include '../PHPExcel/Classes/PHPExcel/Writer/Excel5.php';
 
 $sql = 'SELECT * FROM tblSKU ORDER BY id ASC';
 $result = sqlsrv_query($nccc_conn, $sql);
@@ -45,7 +44,7 @@ while($item = sqlsrv_fetch_array($result)){
 	$i ++;
 }
 
-$outputFileName = 'total.xls';
+$outputFileName = 'NCCC MD SKU LIST.xlsx';
 $xlsWriter = new PHPExcel_Writer_Excel5($resultPHPExcel);
 //ob_start();  ob_flush();
 header("Content-Type: application/force-download");
@@ -58,6 +57,16 @@ header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
 header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
 header("Pragma: no-cache");
 
-$xlsWriter->save( "php://output" );
+$xlsWriter->save('php://output');
 
 ?>
+
+<script>
+$(function () {
+    alert('Downloaded Successfully');
+    window.location.href = 'index.php';
+});
+</script>
+
+
+
