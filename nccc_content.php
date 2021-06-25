@@ -31,7 +31,7 @@
               <div class="card-body">
               <table id="ncccTable" class="table table-bordered table-striped" style="width: 100%;">
 
-              <button class="btn btn-sm btn-success" onclick="#" style="margin-right: 10px;">Export to EXCEL</button>
+              <button class="btn btn-sm btn-success" onclick="exportExcel()" style="margin-right: 10px;">Export to EXCEL</button>
               <button class="btn btn-sm btn-info" onclick="#">Export to CSV</button>
 
               <br><br>

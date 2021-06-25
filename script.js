@@ -34,12 +34,15 @@ function fetch_rdslist()
 }
 fetch_rdslist();
 
-function exportToExcel()
+function exportExcel()
 {
-    $('#example').DataTable( {
-        "processing": true,
-        "serverSide": true,
-        "ajax": "../assets/server_side/server_processing.php"
-    } );
+    $.ajax({
+        url: './report/nccc_excel.php',
+        success: function(data)
+        {
+            console.log(data);
+            alert('ok');
+        }
+
+    });
 }
-exportToExcel();

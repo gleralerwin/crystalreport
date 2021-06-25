@@ -82,12 +82,4 @@ function rdsSkuList()
     }
 }
 
-function getdata()
-{
-    include './inc/nccc_db.php';
-    $sql = 'SELECT * FROM tblSKU';
-    $result = sqlsrv_query($nccc_conn, $sql);
-
-}
-
 ?>
