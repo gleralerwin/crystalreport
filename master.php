@@ -345,14 +345,13 @@
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
-        <div class="row mb-2"></div><!-- /.row -->
+        <div class="row mb-2">  
+        </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
   </div>
   <!-- /.content-wrapper -->
-
- 
 
   <footer class="main-footer">
     <strong>Copyright &copy; 2014-2021 <a href="#">ifashion</a>.</strong>
@@ -371,6 +370,27 @@
 </div>
 <!-- ./wrapper -->
 
+
+<!-- Filter Modal -->
+<div id="filtermodal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 
 <!-- jQuery -->

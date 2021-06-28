@@ -8,14 +8,17 @@ function fetch_nccc_list()
         data:{function: 'getskulist_nccc'},
         beforeSend: function()
         {
-            $("#ajaxSpinnerContainer").show();
+            $("#nccc_loader").show();
+        },
+        complete: function()
+        {
+            $("#nccc_loader").hide();
         },
         success: function(data)
         {
             // console.log(data);
             $('#nccc_list').empty();
             $('#nccc_list').append(data);
-            $("#ajaxSpinnerContainer").hide();
         }
     });
 }
@@ -29,6 +32,14 @@ function fetch_rdslist()
         type: 'post',
         dataType: 'text',
         data:{function: 'rdsSkuList'},
+        beforeSend: function()
+        {
+            $("#rds_loader").show();
+        },
+        complete: function()
+        {
+            $("#rds_loader").hide();
+        },
         success: function(data)
         {
             // console.log(data);
@@ -96,16 +107,7 @@ function Rds_MdExport()
 }
 
 //filtering   brand
-function searchBtn()
+function filterModal()
 {
-   $.ajax({
-       url: 'ajax.php',
-       dataType: 'text',
-       success: function(data)
-       {
-            console.log(data);
-            alert('ok');
-       }
-   });
-
+  $('#filtermodal').modal();
 }

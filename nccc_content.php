@@ -17,24 +17,41 @@
       </div><!-- /.container-fluid -->
     </section>
 
+  
+   
+
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
         <div class="row">
-       
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">SKU LIST</h3>
-                <button class="btn btn-md btn-default float-right" onclick="searchBtn()"><i class="fa fa-search-plus"></i> Filter Search</button>
+                <h3 class="card-title">SKU LIST</h3>&nbsp;
+                
+                <img id="nccc_loader" src="./dist/img/ajax-loader1.gif" alt="loader.gif">
+
+                <button class="btn btn-md btn-default float-right" onclick="filterModal()"><i class="fa fa-search-plus"></i> Filter Search</button>
               </div><!-- /.card-header -->
 
               <div class="card-body">
               <table class="table table-bordered table-striped" style="width: 100%;">
 
-              <button class="btn btn-bg btn-success float-right" onclick="Nccc_MdExport()">Download To Excel ( MD )<i class="fa fa-download"></i></button>
-              <button class="btn btn-bg btn-info float-right" onclick="Nccc_RegExport()" style="margin-right: 10px;">Download To Excel ( REG )<i class="fa fa-download"></i></button>
+              <button class="btn btn-bg btn-success float-right" onclick="Nccc_MdExport()">Export To Excel ( MD ) <i class="fa fa-download"></i></button>
+              <button class="btn btn-bg btn-info float-right" onclick="Nccc_RegExport()" style="margin-right: 5px;">Export To Excel ( REG ) <i class="fa fa-download"></i></button>
       
+              <div id="dropdownSearch" style="display: none;">
+                <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+                <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  <li><a href="#">HTML</a></li>
+                  <li><a href="#">CSS</a></li>
+                  <li><a href="#">JavaScript</a></li>
+                </ul>
+                </div>
+              </div>
+
               <br><br>
                 <thead>
                     <tr>

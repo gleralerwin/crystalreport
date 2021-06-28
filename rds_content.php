@@ -25,15 +25,19 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">SKU LIST</h3>
+                <h3 class="card-title">SKU LIST</h3>&nbsp;
+
+                <img id="rds_loader" src="./dist/img/ajax-loader1.gif" alt="loader.gif">
+                
+                <button class="btn btn-md btn-default float-right" onclick="searchBtn()"><i class="fa fa-search-plus"></i> Filter Search</button>
               </div>
               <!-- /.card-header -->
 
               <div class="card-body">
                 <table class="table table-bordered table-striped">
 
-              <button class="btn btn-md btn-info" onclick="Rds_RegExport()" style="margin-right: 10px;">Export To Excel ( REG )</button>
-              <button class="btn btn-md btn-success" onclick="Rds_MdExport()">Export To Excel ( MD )</button>
+              <button class="btn btn-md btn-success float-right" onclick="Rds_MdExport()">Export To Excel ( MD ) <i class="fa fa-download"></i></button>
+              <button class="btn btn-md btn-info float-right" onclick="Rds_RegExport()" style="margin-right: 5px;">Export To Excel ( REG ) <i class="fa fa-download"></i></button>
 
                 <br><br>
                   <thead>
