@@ -18,6 +18,10 @@ elseif($fucntion = 'getdata')
 {
     getdata();
 }
+elseif($function = 'searchByBrand')
+{
+    searchByBrand();
+}
 
 //////////////////////////////////////////////////////////////
 
@@ -80,6 +84,17 @@ function rdsSkuList()
             </tr>
         ';
     }
+}
+
+//search by brand
+function searchByBrand()
+{
+    include './inc/nccc_db.php';
+    $sql = 'SELECT * FROM tblSKU ORDER BY id ASC';
+    $result = sqlsrv_query($nccc_conn, $sql);
+    $data = sqlsrv_fetch_array($result);
+
+    var_dump($data);
 }
 
 ?>

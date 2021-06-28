@@ -17,25 +17,24 @@
       </div><!-- /.container-fluid -->
     </section>
 
-    <div id="display"></div>
-
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
         <div class="row">
-
+       
           <div class="col-12">
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">SKU LIST</h3>
+                <button class="btn btn-md btn-default float-right" onclick="searchBtn()"><i class="fa fa-search-plus"></i> Filter Search</button>
               </div><!-- /.card-header -->
 
               <div class="card-body">
               <table class="table table-bordered table-striped" style="width: 100%;">
 
-              <button class="btn btn-md btn-info" onclick="Nccc_RegExport()" style="margin-right: 10px;">Export To Excel ( REG )</button>
-              <button class="btn btn-md btn-success" onclick="Nccc_MdExport()">Export To Excel ( MD )</button>
-
+              <button class="btn btn-bg btn-success float-right" onclick="Nccc_MdExport()">Download To Excel ( MD )<i class="fa fa-download"></i></button>
+              <button class="btn btn-bg btn-info float-right" onclick="Nccc_RegExport()" style="margin-right: 10px;">Download To Excel ( REG )<i class="fa fa-download"></i></button>
+      
               <br><br>
                 <thead>
                     <tr>

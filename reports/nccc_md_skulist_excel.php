@@ -60,13 +60,3 @@ header("Pragma: no-cache");
 $xlsWriter->save('php://output');
 
 ?>
-
-<script>
-$(function () {
-    alert('Downloaded Successfully');
-    window.location.href = 'index.php';
-});
-</script>
-
-
-
