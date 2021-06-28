@@ -107,7 +107,17 @@ function Rds_MdExport()
 }
 
 //filtering   brand
-function ncccSearchBtn()
+function filterSearch()
 {
-    var nccc_search = $('#nccc_search').val();
+    $.ajax({
+        url: 'ajax.php',
+        type: 'post',
+        dataType: 'text',
+        success: function(data)
+        {
+            console.log(data);
+            $('#search').show();
+        }
+    });
+
 }

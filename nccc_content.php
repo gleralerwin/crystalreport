@@ -36,7 +36,7 @@
 
               <div class="card-body">
 
-              <div id="search" class="row">
+              <div id="search" class="row" style="display: none;">
                 <div class="col-sm-3">
                   <div class="form-group">
                   Search By Brand 
@@ -71,7 +71,7 @@
                   </div>
                 </div>
               </div>
-              
+
               <br><br>
 
               <table class="table table-bordered table-striped" style="width: 100%;">
