@@ -18,9 +18,10 @@ elseif($fucntion = 'getdata')
 {
     getdata();
 }
-elseif($function = 'searchByBrand')
+elseif($function = 'NcccSearchByBrand')
 {
-    searchByBrand();
+    $searchQuery = $_POST['searchquery'];
+    NcccSearchByBrand($searchQuery);
 }
 
 //////////////////////////////////////////////////////////////
@@ -87,14 +88,14 @@ function rdsSkuList()
 }
 
 //search by brand
-function searchByBrand()
+function NcccSearchByBrand($searchQuery)
 {
     include './inc/nccc_db.php';
-    $sql = 'SELECT * FROM tblSKU ORDER BY id ASC';
-    $result = sqlsrv_query($nccc_conn, $sql);
-    $data = sqlsrv_fetch_array($result);
+    $sql = 'SELECT * FROM tblSKU WHERE brand LIKE '%$searchQuery%' ';
+    $searchquery = sqlsrv_query($nccc_conn, $sql);
+    $brand = sqlsrv_fetch_array($searchquery);
 
-    var_dump($data);
+    var_dump($brand);
 }
 
 ?>

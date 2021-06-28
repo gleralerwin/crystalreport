@@ -107,7 +107,7 @@ function Rds_MdExport()
 }
 
 //filtering   brand
-function filterModal()
+function ncccSearchBtn()
 {
-  $('#filtermodal').modal();
+    var nccc_search = $('#nccc_search').val();
 }
