@@ -12,6 +12,14 @@ elseif($function == 'NcccBrandName')
 {
     NcccBrandName();
 }
+elseif($function == 'ncccsearch')
+{
+    $brand = $_POST['brand'];
+    $styleno = $_POST['styleno'];
+    $sku = $_POST['sku'];
+    $vendorcode = $_POST['vendorcode'];
+    ncccsearch($brand, $styleno, $sku, $vendorcode);
+}
 
 
 //////////////////////////////////////////////////////////////
@@ -90,6 +98,18 @@ function NcccBrandName()
         $brand = $row['brand'];
         echo '<option value='.$id.'>'.$brand.'</option>';
     }
-
 }
+
+function ncccsearch($brand, $styleno, $sku, $vendorcode)
+{
+    include './inc/nccc_db.php';
+    $sql = 'SELECT * FROM tblsku WHERE brand='.$brand.' AND styleno='.$styleno.' AND sku='.$sku.' AND vendorcode='.$vendorcode.'  ';
+    $result = sqlsrv_query($nccc_conn, $sql);
+
+    while($row = sqlsrv_fetch_array($result))
+    {
+        echo $row['brand'];
+    }
+}
+
 ?>

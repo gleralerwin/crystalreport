@@ -140,7 +140,8 @@ function ncccSearch()
             brand:brand,
             styleno:styleno,
             sku:sku,
-            vendorcode:vendorcode
+            vendorcode:vendorcode,
+            function: 'ncccsearch'
         },
         success:function(data)
         {

@@ -58,7 +58,7 @@
                     <input type="text" name="vendorcode" id="vendorcode" class="form-control">
                   </div>
                   <div class="form-group">
-                    <button class="btn btn-md btn-primary form-control" onclick="">Search</button>
+                    <button class="btn btn-md btn-primary form-control" onclick="ncccSearch()">Search</button>
                   </div>
                 </div>
 
