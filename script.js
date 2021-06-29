@@ -106,18 +106,48 @@ function Rds_MdExport()
     }    
 }
 
-//filtering   brand
-function filterSearch()
+//NCCC get brand name
+function ncccGetBrandName()
 {
     $.ajax({
         url: 'ajax.php',
         type: 'post',
         dataType: 'text',
+        data:{function: 'NcccBrandName'},
         success: function(data)
         {
-            console.log(data);
-            $('#search').show();
+            // console.log(data);
+            $('#ncccsearch').toggle('fast');
+            $('#brand').empty();
+            $('#brand').append(data);
         }
     });
-
 }
+
+//nccc search
+function ncccSearch()
+{
+    var brand = $('#brand').val();
+    var styleno = $('#styleno').val();
+    var sku = $('#sku').val();
+    var vendorcode = $('#vendorcode').val();
+
+    $.ajax({
+        url: 'ajax.php',
+        type: 'post',
+        dataType: 'text',
+        data:{
+            brand:brand,
+            styleno:styleno,
+            sku:sku,
+            vendorcode:vendorcode
+        },
+        success:function(data)
+        {
+            console.log(data);
+            $('#display').empty();
+            $('#display').append(data);
+        }
+    });
+}
+

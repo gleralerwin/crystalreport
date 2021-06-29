@@ -29,7 +29,7 @@
 
                 <img id="rds_loader" src="./dist/img/ajax-loader1.gif" alt="loader.gif">
                 
-                <button class="btn btn-md btn-default float-right" onclick="searchBtn()"><i class="fa fa-search-plus"></i> Filter Search</button>
+                <button class="btn btn-md btn-default float-right" onclick=""><i class="fa fa-search-plus"></i> Filter Search</button>
               </div>
               <!-- /.card-header -->
 

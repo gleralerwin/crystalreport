@@ -31,45 +31,37 @@
                 
                 <img id="nccc_loader" src="./dist/img/ajax-loader1.gif" alt="loader.gif">
 
-                <button class="btn btn-md btn-default float-right" onclick="filterSearch()"><i class="fa fa-search-plus"></i> Filter Search</button>
+                <button class="btn btn-md btn-default float-right" onclick="ncccGetBrandName()"><i class="fa fa-search-plus"></i> Filter Search</button>
               </div><!-- /.card-header -->
 
               <div class="card-body">
 
-              <div id="search" class="row" style="display: none;">
+              <div id="ncccsearch" class="row" style="display: none; background-color: #FFF0F5; padding: 10px;">
                 <div class="col-sm-3">
                   <div class="form-group">
-                  Search By Brand 
-                  <select class="form-control">
-                      <option value=""></option>
-                      <option value="">Crissa</option>
-                      <option value="">Dickies</option>
-                      <option value="">apologies</option>
-                    </select>    
+                    <label>Select Brand</label>
+                    <select class="form-control" id="brand" name="brand"></select>    
+                  </div>
+                  <div class="form-group">
+                    <label>SKU</label>
+                    <input type="text" name="sku" id="sku" class="form-control">
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <label>Style No.</label>
+                    <input type="text" name="styleno" id="styleno" class="form-control">
+                  </div>
+
+                  <div class="form-group">
+                    <label>Vendor Code</label>
+                    <input type="text" name="vendorcode" id="vendorcode" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <button class="btn btn-md btn-primary form-control" onclick="">Search</button>
                   </div>
                 </div>
 
-                <div class="col-sm-3">
-                  <div class="form-group">
-                  Price Type
-                    <select class="form-control">
-                      <option value="">Crissa</option>
-                      <option value="">Dickies</option>
-                      <option value="">apologies</option>
-                    </select>    
-                  </div>
-                </div>
-
-                <div class="col-sm-3">
-                  <div class="form-group">
-                  Style No.
-                    <select class="form-control">
-                      <option value="">Crissa</option>
-                      <option value="">Dickies</option>
-                      <option value="">apologies</option>
-                    </select>    
-                  </div>
-                </div>
               </div>
 
               <br><br>

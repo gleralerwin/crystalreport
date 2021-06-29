@@ -1,28 +1,18 @@
 <?php
-
 $function = $_POST['function'];
-
 if($function == 'getskulist_nccc')
 {
     getskulist_nccc();
 }
-elseif($function = 'rdsSkuList')
+elseif($function == 'rdsSkuList')
 {
     rdsSkuList();
 }
-elseif($function = 'rdslist_excel')
+elseif($function == 'NcccBrandName')
 {
-    rdslist_excel();
+    NcccBrandName();
 }
-elseif($fucntion = 'getdata')
-{
-    getdata();
-}
-elseif($function = 'NcccSearchByBrand')
-{
-    $searchQuery = $_POST['searchquery'];
-    NcccSearchByBrand($searchQuery);
-}
+
 
 //////////////////////////////////////////////////////////////
 
@@ -88,14 +78,18 @@ function rdsSkuList()
 }
 
 //search by brand
-function NcccSearchByBrand($searchQuery)
+function NcccBrandName()
 {
     include './inc/nccc_db.php';
-    $sql = 'SELECT * FROM tblSKU WHERE brand LIKE '%$searchQuery%' ';
-    $searchquery = sqlsrv_query($nccc_conn, $sql);
-    $brand = sqlsrv_fetch_array($searchquery);
+    $sql = 'SELECT DISTINCT brand FROM tblsku ORDER BY brand';
+    $result = sqlsrv_query($nccc_conn, $sql);
+   
+    while($row = sqlsrv_fetch_array($result))
+    {
+        $id = $row['id'];
+        $brand = $row['brand'];
+        echo '<option value='.$id.'>'.$brand.'</option>';
+    }
 
-    var_dump($brand);
 }
-
 ?>
