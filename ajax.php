@@ -21,7 +21,7 @@ elseif($function == 'ncccsearch')
 }
 elseif($function == 'nccc_desc')
 {
-    $brandname = $_POST['Brand'];
+    $brandname = $_POST['brand'];
     nccc_desc($brandname);
 }
 
@@ -108,12 +108,12 @@ function nccc_desc($brandname)
     include './inc/nccc_db.php';
     $sql = 'SELECT * FROM tblsku WHERE brand LIKE '%$brandname%' ';
     $result = sqlsrv_query($nccc_conn, $sql);
-   
+    
     while($row = sqlsrv_fetch_array($result))
     {
         $id = $row['id'];
-        $desc = $row['Descrip'];
-        echo '<option value= '.$id.'>'.$desc.'</option>';
+        $brandname = $row['brand'];
+        echo '<option value= '.$id.'>'.$brandname.'</option>';
     }
 }
 

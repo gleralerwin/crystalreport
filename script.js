@@ -127,13 +127,13 @@ function ncccGetBrandName()
 //nccc description
 function ncccdesc()
 {
-    var brandname = document.getElementById('brand').value;
-
+    // var brandname = $('#brand').val();
+    var brandname = document.getElementById().value;
     $.ajax({
         url: 'ajax.php',
         type: 'post',
         dataType: 'text',
-        data: {
+        data:{
             brandname:brandname,
             function: 'nccc_desc'
         },
