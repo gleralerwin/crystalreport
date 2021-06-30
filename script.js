@@ -113,16 +113,39 @@ function ncccGetBrandName()
         url: 'ajax.php',
         type: 'post',
         dataType: 'text',
-        data:{function: 'NcccBrandName'},
+        data:{function: 'ncccBrandName'},
         success: function(data)
         {
             // console.log(data);
-            $('#ncccsearch').toggle('fast');
+            $('#ncccsearch').toggle('slow');
             $('#brand').empty();
             $('#brand').append(data);
         }
     });
 }
+
+//nccc description
+function ncccdesc()
+{
+    var brandname = document.getElementById('brand').value;
+
+    $.ajax({
+        url: 'ajax.php',
+        type: 'post',
+        dataType: 'text',
+        data: {
+            brandname:brandname,
+            function: 'nccc_desc'
+        },
+        success: function(data)
+        {
+            console.log();
+            $('#display').empty();
+            $('#display').append(data);
+        }
+    });
+}
+ncccdesc();
 
 //nccc search
 function ncccSearch()
@@ -130,7 +153,6 @@ function ncccSearch()
     var brand = $('#brand').val();
     var styleno = $('#styleno').val();
     var sku = $('#sku').val();
-    var vendorcode = $('#vendorcode').val();
 
     $.ajax({
         url: 'ajax.php',
@@ -140,14 +162,13 @@ function ncccSearch()
             brand:brand,
             styleno:styleno,
             sku:sku,
-            vendorcode:vendorcode,
             function: 'ncccsearch'
         },
         success:function(data)
         {
             console.log(data);
-            $('#display').empty();
-            $('#display').append(data);
+            $('#test').empty();
+            $('#test').append(data);
         }
     });
 }

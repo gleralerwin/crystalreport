@@ -27,10 +27,9 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">SKU LIST</h3>&nbsp;
+                <h3 class="card-title">DATA LIST</h3>&nbsp;
                 
                 <img id="nccc_loader" src="./dist/img/ajax-loader1.gif" alt="loader.gif">
-
                 <button class="btn btn-md btn-default float-right" onclick="ncccGetBrandName()"><i class="fa fa-search-plus"></i> Filter Search</button>
               </div><!-- /.card-header -->
 
@@ -61,8 +60,9 @@
                     <button class="btn btn-md btn-primary form-control" onclick="ncccSearch()">Search</button>
                   </div>
                 </div>
-
               </div>
+
+              <div id="display"></div>
 
               <br><br>
 

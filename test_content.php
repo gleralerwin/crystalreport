@@ -1,3 +1,163 @@
-<script>
-alert('hello');
-</script>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Test Page</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Test Page</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">SKU LIST</h3>&nbsp;
+                
+                <img id="nccc_loader" src="./dist/img/ajax-loader1.gif" alt="loader.gif">
+
+                <button class="btn btn-md btn-default float-right" onclick="ncccGetBrandName()"><i class="fa fa-search-plus"></i> Filter Search</button>
+              </div><!-- /.card-header -->
+
+              <div class="card-body">
+              <div id="ncccsearch" class="row" style="display: none; background-color: #FFF0F5; padding: 16px;">
+                <div class="col-sm-2" style="margin-top: 32px;">
+                    <div class="form-group">
+                      <h5><strong>Customize Search</strong></h5>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                  <div class="form-group">
+                    <label>Select Brand</label>
+                    <select class="form-control" id="brand" name="brand"></select>    
+                  </div>
+                  <div class="form-group">
+                    <label>Description</label>
+                    <select class="form-control" id="desc" name="desc" onchange="ncccdesc()"></select>    
+                  </div>
+                </div>
+                <div class="col-sm-2">
+                  <div class="form-group">
+                    <label>Style No.</label>
+                    <input type="text" name="styleno" id="styleno" class="form-control">
+                  </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label>SKU</label>
+                        <input type="text" name="sku" id="sku" class="form-control">
+                    </div>
+                </div>
+                <div class="col-sm-2" style="margin-top: 32px;">
+                    <div class="form-group">
+                        <button class="btn btn-md btn-primary form-control" onclick="ncccSearch()">Search</button>
+                    </div>
+                </div>
+              </div>
+
+              <div id="display"></div>
+
+              <br>
+
+              <table class="table table-bordered table-striped" style="width: 100%;">
+
+              <button class="btn btn-bg btn-success float-right" onclick="Nccc_MdExport()">Export To Excel ( MD ) <i class="fa fa-download"></i></button>
+              <button class="btn btn-bg btn-info float-right" onclick="Nccc_RegExport()" style="margin-right: 5px;">Export To Excel ( REG ) <i class="fa fa-download"></i></button>
+      
+              <div id="dropdownSearch" style="display: none;">
+                <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+                <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  <li><a href="#">HTML</a></li>
+                  <li><a href="#">CSS</a></li>
+                  <li><a href="#">JavaScript</a></li>
+                </ul>
+                </div>
+              </div>
+
+              <br><br>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Brand</th>
+                        <th>Desc</th>
+                        <th>SizeSet</th>
+                        <th>StyleNo</th>
+                        <th>BuyerCode</th>
+                        <th>SKUType</th>
+                        <th>VendorCode</th>
+                        <th>SRP</th>
+                        <th>UPC</th>
+                        <th>Uom</th>
+                        <th>SKU</th>
+                        <th>Dept</th>
+                        <th>SubDept</th>
+                        <th>Class</th>
+                        <th>SubClass</th>
+                        <th>EntryDate</th>
+                        <th>PriceType</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                        <th>#</th>
+                        <th>Brand</th>
+                        <th>Desc</th>
+                        <th>SizeSet</th>
+                        <th>StyleNo</th>
+                        <th>BuyerCode</th>
+                        <th>SKUType</th>
+                        <th>VendorCode</th>
+                        <th>SRP</th>
+                        <th>UPC</th>
+                        <th>Uom</th>
+                        <th>SKU</th>
+                        <th>Dept</th>
+                        <th>SubDept</th>
+                        <th>Class</th>
+                        <th>SubClass</th>
+                        <th>EntryDate</th>
+                        <th>PriceType</th>
+                  </tr>
+              </tfoot>
+                <tbody id="test"></tbody>
+            </table>
+
+              </div>
+              <!-- /.card-body -->
+
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+          
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->

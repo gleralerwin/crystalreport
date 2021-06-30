@@ -8,19 +8,22 @@ elseif($function == 'rdsSkuList')
 {
     rdsSkuList();
 }
-elseif($function == 'NcccBrandName')
+elseif($function == 'ncccBrandName')
 {
-    NcccBrandName();
+    ncccBrandName();
 }
 elseif($function == 'ncccsearch')
 {
     $brand = $_POST['brand'];
     $styleno = $_POST['styleno'];
     $sku = $_POST['sku'];
-    $vendorcode = $_POST['vendorcode'];
-    ncccsearch($brand, $styleno, $sku, $vendorcode);
+    ncccsearch($brand, $styleno, $sku);
 }
-
+elseif($function == 'nccc_desc')
+{
+    $brandname = $_POST['Brand'];
+    nccc_desc($brandname);
+}
 
 //////////////////////////////////////////////////////////////
 
@@ -85,31 +88,141 @@ function rdsSkuList()
     }
 }
 
-//search by brand
-function NcccBrandName()
+//get by brand
+function ncccBrandName()
 {
     include './inc/nccc_db.php';
-    $sql = 'SELECT DISTINCT brand FROM tblsku ORDER BY brand';
+    $sql = 'SELECT DISTINCT brand FROM tblsku ORDER BY brand ASC';
+    $result = sqlsrv_query($nccc_conn, $sql);
+   
+    while($row = sqlsrv_fetch_array($result))
+    {
+        $brand = $row['brand'];
+        echo '<option>'.$brand.'</option>';
+    }
+}
+
+//get by description
+function nccc_desc($brandname)
+{
+    include './inc/nccc_db.php';
+    $sql = 'SELECT * FROM tblsku WHERE brand LIKE '%$brandname%' ';
     $result = sqlsrv_query($nccc_conn, $sql);
    
     while($row = sqlsrv_fetch_array($result))
     {
         $id = $row['id'];
-        $brand = $row['brand'];
-        echo '<option value='.$id.'>'.$brand.'</option>';
+        $desc = $row['Descrip'];
+        echo '<option value= '.$id.'>'.$desc.'</option>';
     }
 }
 
-function ncccsearch($brand, $styleno, $sku, $vendorcode)
+//customize search
+function ncccsearch($brand, $styleno, $sku)
 {
     include './inc/nccc_db.php';
-    $sql = 'SELECT * FROM tblsku WHERE brand='.$brand.' AND styleno='.$styleno.' AND sku='.$sku.' AND vendorcode='.$vendorcode.'  ';
+   
+    $sql = "SELECT * FROM tblsku WHERE brand LIKE '%$brand%' AND styleno LIKE '%$styleno%' AND sku LIKE '%$sku%' ";
     $result = sqlsrv_query($nccc_conn, $sql);
 
-    while($row = sqlsrv_fetch_array($result))
+    // checked brand    
+    if($brand == true)
     {
-        echo $row['brand'];
-    }
-}
+       $i=1;
+       while($rowbrand = sqlsrv_fetch_array($result))
+       {
+        $brand = $rowbrand['Brand'];
+        $desc = $rowbrand['Descrip'];
+        $sizeset = $rowbrand['SizeSet'];
+        $styleno = $rowbrand['StyleNo'];
+        $buyercode = $rowbrand['BuyerCode'];
+        $skutype = $rowbrand['SKUType'];
+        $vendorcode = $rowbrand['VendorCode'];
+        $srp = $rowbrand['SRP'];
+        $upc = $rowbrand['UPC'];
+        $uom = $rowbrand['UoM'];
+        $sku = $rowbrand['SKU'];
+        $dept = $rowbrand['Dept'];
+        $subdept = $rowbrand['SubDept'];
+        $class = $rowbrand['Class'];
+        $subclass = $rowbrand['SubClass'];
+        $entrydate = $rowbrand['EntryDate']->format('Y/m/d');
+        $pricetype = $rowbrand['PriceType'];
 
+        echo '
+        <tr>
+        <td>'.$i++.'</td>
+        <td>'.$brand.'</td>
+        <td>'.$desc.'</td>
+        <td>'.$sizeset.'</td>
+        <td>'.$styleno.'</td>
+        <td>'.$buyercode.'</td>
+        <td>'. $skutype.'</td>
+        <td>'.$vendorcode.'</td>
+        <td>'. $srp.'</td>
+        <td>'. $upc.'</td>
+        <td>'. $uom.'</td>
+        <td>'. $sku.'</td>
+        <td>'.$dept.'</td>
+        <td>'.$subdept.'</td>
+        <td>'.$class.'</td>
+        <td>'.$subclass.'</td>
+        <td>'.$entrydate.'</td>
+        <td>'.$pricetype.'</td>
+        </tr>
+        ';
+       }
+    }
+    elseif(isset($styleno) && isset($sku))
+    {
+        $i=1;
+        while($rowstyleno = sqlsrv_fetch_array($result))
+       {
+        $brand = $rowstyleno['Brand'];
+        $desc = $rowstyleno['Descrip'];
+        $sizeset = $rowstyleno['SizeSet'];
+        $styleno = $rowstyleno['StyleNo'];
+        $buyercode = $rowstyleno['BuyerCode'];
+        $skutype = $rowstyleno['SKUType'];
+        $vendorcode = $rowstyleno['VendorCode'];
+        $srp = $rowstyleno['SRP'];
+        $upc = $rowstyleno['UPC'];
+        $uom = $rowstyleno['UoM'];
+        $sku = $rowstyleno['SKU'];
+        $dept = $rowstyleno['Dept'];
+        $subdept = $rowstyleno['SubDept'];
+        $class = $rowstyleno['Class'];
+        $subclass = $rowstyleno['SubClass'];
+        $entrydate = $rowstyleno['EntryDate']->format('Y/m/d');
+        $pricetype = $rowstyleno['PriceType'];
+
+        echo '
+        <tr>
+        <td>'.$i++.'</td>
+        <td>'.$brand.'</td>
+        <td>'.$desc.'</td>
+        <td>'.$sizeset.'</td>
+        <td>'.$styleno.'</td>
+        <td>'.$buyercode.'</td>
+        <td>'. $skutype.'</td>
+        <td>'.$vendorcode.'</td>
+        <td>'. $srp.'</td>
+        <td>'. $upc.'</td>
+        <td>'. $uom.'</td>
+        <td>'. $sku.'</td>
+        <td>'.$dept.'</td>
+        <td>'.$subdept.'</td>
+        <td>'.$class.'</td>
+        <td>'.$subclass.'</td>
+        <td>'.$entrydate.'</td>
+        <td>'.$pricetype.'</td>
+        </tr>
+        ';
+       }
+    } 
+    else {
+        echo "No Data Match !!!";
+    }
+
+}
 ?>
