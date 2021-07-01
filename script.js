@@ -126,31 +126,27 @@ function ncccGetBrandName()
     });
 }
 
+//nccc get description
+function ncccGetDesc()
+{
+    let ncccdesc = $('#brand').val();
+    
+    $.ajax({
+        url: 'ajax.php',
+        type: 'post',
+        dataType: 'text',
+        data:{
+            ncccGetDesc:ncccGetDesc,
+            function: 'getDesc'
+        },
+        success: function(data)
+        {
+            console.log(data);
+            document.getElementById('display').innerHTML = data;
+        }
 
-//nccc description
-// function ncccdesc()
-// {
-//     // var brandname = $('#brand').val();
-//     var brandname = document.getElementById().value;
-//     $.ajax({
-//         url: 'ajax.php',
-//         type: 'post',
-//         dataType: 'text',
-//         data:{
-//             brandname:brandname,
-//             function: 'nccc_desc'
-//         },
-//         success: function(data)
-//         {
-//             console.log();
-//             $('#display').empty();
-//             $('#display').append(data);
-//         }
-//     });
-// }
-// ncccdesc();
-
-
+    });
+}
 
 //nccc search
 function ncccSearch()

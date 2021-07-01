@@ -49,13 +49,14 @@
               <div class="col-sm-2">
                 <div class="form-group">
                   <label>Select Brand</label>
-                  <select class="form-control" id="brand" name="brand"></select>    
+                  <p id=display></p>
+                  <select class="form-control" id="brand" name="brand" onchange="ncccGetDesc()"></select>    
                 </div>
               </div>
               <div class="col-sm-2">
                 <div class="form-group">
                 <label>Description</label>
-                  <select class="form-control" id="desc" name="desc" onchange="ncccdesc()"></select>    
+                  <select class="form-control" id="desc" name="desc"></select>    
                 </div>
               </div>
               <div class="col-sm-2">
@@ -87,8 +88,6 @@
               </div><!-- /.card-header -->
 
               <div class="card-body">
-
-              <div id="display"></div>
 
               <button id="nccc_searchloader" class="btn btn-primary" style="display: none;">
                 <span class="spinner-border spinner-border-sm"></span> Loading..

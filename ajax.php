@@ -21,8 +21,8 @@ elseif($function == 'ncccsearch')
 }
 elseif($function == 'nccc_desc')
 {
-    $brandname = $_POST['brand'];
-    nccc_desc($brandname);
+    $brand = $_POST['brand'];
+    nccc_desc($brand);
 }
 elseif($function == 'rdsBrandName')
 {
@@ -36,6 +36,15 @@ elseif($function == 'rdsSaveSearch')
     $sku = $_POST['sku'];
     rdsSaveSearch($brandname, $shortdesc, $styleno, $sku);
 }
+elseif($function == 'getDesc')
+{
+    $getdesc =  $_POST['brand'];
+    getDesc($getdesc);
+}
+
+
+
+
 //////////////////////////////////////////////////////////////
 
 //fetch nccc sku list
@@ -133,20 +142,6 @@ function ncccBrandName()
     }
 }
 
-//get by description
-function nccc_desc($brandname)
-{
-    include './inc/nccc_db.php';
-    $sql = 'SELECT * FROM tblsku WHERE brand LIKE '%$brandname%' ';
-    $result = sqlsrv_query($nccc_conn, $sql);
-    
-    while($row = sqlsrv_fetch_array($result))
-    {
-        $id = $row['id'];
-        $brandname = $row['brand'];
-        echo '<option value= '.$id.'>'.$brandname.'</option>';
-    }
-}
 
 //NCCC customize search
 function ncccsearch($brand, $styleno, $sku)
@@ -365,6 +360,18 @@ function rdsSaveSearch($brandname, $shortdesc, $styleno, $sku)
     else {
         echo "No Data Match !!!";
     }
+
+}
+
+function getDesc($getdesc)
+{
+    include './inc/nccc_db.php';
+   
+    $sql = "SELECT id FROM tblsku WHERE brand='.$getdesc.' ";
+    $result = sqlsrv_query($nccc_conn, $sql);
+    $checkResult = sqlsrv_fetch_array($result);
+
+    echo $result;
 
 }
 
