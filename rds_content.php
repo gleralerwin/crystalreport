@@ -1,3 +1,28 @@
+  <!-- RDS Spinner loader -->
+<style>
+  .loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
+
+
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -10,7 +35,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">RDS Report</li>
+              <li class="breadcrumb-item active">SKU Report</li>
             </ol>
           </div>
         </div>
@@ -20,65 +45,101 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-        <div class="row">
 
+         <div id="rds_search" class="row" style="background-color: #FFFFFF; margin: 2px 2px 10px 2px; padding: 18px; border: 1px solid #A9A9A9; display: none;">
+            <div class="col-sm-2">
+              <div class="form-group">
+                <label>Select Brand</label>
+                <select class="form-control" id="brandname" name="brandname"></select>    
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <div class="form-group">
+              <label>Description</label>
+                <select class="form-control" id="shortdesc" name="shortdesc" onchange="ncccdesc()"></select>    
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <div class="form-group">
+                <label>Style No.</label>
+                <input type="text" name="styleno" id="styleno" class="form-control">
+              </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <label>SKU</label>
+                    <input type="text" name="sku" id="sku" class="form-control">
+                </div>
+            </div>
+            <div class="col-sm-2" style="margin-top: 32px;">
+                <div class="form-group">
+                    <button class="btn btn-md btn-primary form-control" onclick="rdsSearch()">Search</button>
+                </div>
+            </div>
+         </div>      
+         
+        <div class="row">
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">DATA LIST</h3>&nbsp;
+                <h3 class="card-title">SKU LIST</h3>
 
-                <img id="rds_loader" src="./dist/img/ajax-loader1.gif" alt="loader.gif">
-                
-                <button class="btn btn-md btn-default float-right" onclick=""><i class="fa fa-search-plus"></i> Filter Search</button>
+                <button class="btn btn-md btn-default float-right" onclick="rdssearch()"><i class="fa fa-search-plus"></i> Filter Search</button>
               </div>
               <!-- /.card-header -->
 
               <div class="card-body">
-                <table class="table table-bordered table-striped">
 
+              <button id="rds_searchloader" class="btn btn-primary" style="display: none;">
+                <span class="spinner-border spinner-border-sm"></span> Loading..
+              </button>
+
+              <table class="table table-bordered table-striped">
               <button class="btn btn-md btn-success float-right" onclick="Rds_MdExport()">Export To Excel ( MD ) <i class="fa fa-download"></i></button>
               <button class="btn btn-md btn-info float-right" onclick="Rds_RegExport()" style="margin-right: 5px;">Export To Excel ( REG ) <i class="fa fa-download"></i></button>
 
                 <br><br>
                   <thead>
                   <tr>
-                    <th>SubDeptClass</th>
+                    <th>#</th>
+                    <th>BrandName</th>
+                    <th>ShortDesc</th>
+                    <th>ItemDesc</th>
                     <th>SKU</th>
                     <th>UPC</th>
                     <th>MFno</th>
-                    <th>StyleN0</th>
-                    <th>ItemDesc</th>
-                    <th>ShortDesc</th>
-                    <th>BrandName</th>
+                    <th>StyleNo</th>
                     <th>BuyerCode</th>
                     <th>OrigPrice</th>
                     <th>PriceType</th>
-                    <!-- <th>CreateDate</th> -->
+                    <th>CreateDate</th>
                     <th>IRMSName</th>
                     <th>VendorCode</th>
+                    <th>SubDeptClass</th>
                   </tr>
                   </thead>
 
                   <tfoot>
                   <tr>
-                    <th>SubDeptClass</th>
+                  <th>#</th>
+                    <th>BrandName</th>
+                    <th>ShortDesc</th>
+                    <th>ItemDesc</th>
                     <th>SKU</th>
                     <th>UPC</th>
                     <th>MFno</th>
-                    <th>StyleN0</th>
-                    <th>ItemDesc</th>
-                    <th>ShortDesc</th>
-                    <th>BrandName</th>
+                    <th>StyleNo</th>
                     <th>BuyerCode</th>
                     <th>OrigPrice</th>
                     <th>PriceType</th>
-                    <!-- <th>CreateDate</th> -->
+                    <th>CreateDate</th>
                     <th>IRMSName</th>
                     <th>VendorCode</th>
+                    <th>SubDeptClass</th>
                   </tr>
               </tfoot>
-
-                  <tbody id="rdslist"></tbody>
+                  <tbody id="rdslist" style="display: none;"></tbody>
+                  <tbody id="rds_searchlist" style="display: none;"></tbody>
                 </table>
 
               </div>
@@ -90,10 +151,12 @@
           </div>
           <!-- /.col -->
 
-          
-
         </div>
         <!-- /.row -->
+
+        <!-- NCCC list loader -->
+        <div id="rds_loader" class="container loader"></div>
+
       </div>
       <!-- /.container-fluid -->
     </section>

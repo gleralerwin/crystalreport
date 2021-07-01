@@ -18,6 +18,7 @@ function fetch_nccc_list()
         {
             // console.log(data);
             $('#nccc_list').empty();
+            $('#nccc_list').show(data);
             $('#nccc_list').append(data);
         }
     });
@@ -44,6 +45,7 @@ function fetch_rdslist()
         {
             // console.log(data);
             $('#rdslist').empty();
+            $('#rdslist').show(data);
             $('#rdslist').append(data);
         }
     });
@@ -117,35 +119,38 @@ function ncccGetBrandName()
         success: function(data)
         {
             // console.log(data);
-            $('#ncccsearch').toggle('slow');
+            $('#ncccsearch').toggle('fast');
             $('#brand').empty();
             $('#brand').append(data);
         }
     });
 }
 
+
 //nccc description
-function ncccdesc()
-{
-    // var brandname = $('#brand').val();
-    var brandname = document.getElementById().value;
-    $.ajax({
-        url: 'ajax.php',
-        type: 'post',
-        dataType: 'text',
-        data:{
-            brandname:brandname,
-            function: 'nccc_desc'
-        },
-        success: function(data)
-        {
-            console.log();
-            $('#display').empty();
-            $('#display').append(data);
-        }
-    });
-}
-ncccdesc();
+// function ncccdesc()
+// {
+//     // var brandname = $('#brand').val();
+//     var brandname = document.getElementById().value;
+//     $.ajax({
+//         url: 'ajax.php',
+//         type: 'post',
+//         dataType: 'text',
+//         data:{
+//             brandname:brandname,
+//             function: 'nccc_desc'
+//         },
+//         success: function(data)
+//         {
+//             console.log();
+//             $('#display').empty();
+//             $('#display').append(data);
+//         }
+//     });
+// }
+// ncccdesc();
+
+
 
 //nccc search
 function ncccSearch()
@@ -164,11 +169,77 @@ function ncccSearch()
             sku:sku,
             function: 'ncccsearch'
         },
+        beforeSend: function()
+        {
+            $("#nccc_searchloader").show();
+        },
+        complete: function()
+        {
+            $("#nccc_searchloader").hide();
+        },
         success:function(data)
         {
-            console.log(data);
-            $('#test').empty();
-            $('#test').append(data);
+            // console.log(data);
+            $('#nccc_search').empty();
+            $('#nccc_search').show(data);
+            $('#nccc_search').append(data);
+            $('#nccc_list').hide(data);
+        }
+    });
+}
+
+// rds get brand name
+function rdssearch()
+{
+    $.ajax({
+        url: 'ajax.php',
+        type: 'post',
+        dataType: 'text',
+        data:{function: 'rdsBrandName'},
+        success: function(data)
+        {
+            // console.log(data);
+            $('#rds_search').toggle('fast');
+            $('#brandname').empty();
+            $('#brandname').append(data);
+        }
+    });
+}
+
+//nccc search
+function rdsSearch()
+{
+    let brandname = $('#brandname').val();
+    let shortdesc = $('#shortdesc').val();
+    let styleno = $('#styleno').val();
+    let sku = $('#sku').val();
+
+    $.ajax({
+        url: 'ajax.php',
+        type: 'post',
+        dataType: 'text',
+        data:{
+            brandname:brandname,
+            shortdesc:shortdesc,
+            styleno:styleno,
+            sku:sku,
+            function: 'rdsSaveSearch'
+        },
+        beforeSend: function()
+        {
+            $("#rds_searchloader").show();
+        },
+        complete: function()
+        {
+            $("#rds_searchloader").hide();
+        },
+        success:function(data)
+        {
+            // console.log(data);
+            $('#rds_searchlist').empty();
+            $('#rds_searchlist').show(data);
+            $('#rds_searchlist').append(data);
+            $('#rdslist').hide(data);
         }
     });
 }

@@ -111,6 +111,7 @@
                         <th>PriceType</th>
                     </tr>
                 </thead>
+               
                 <tfoot>
                   <tr>
                         <th>#</th>
