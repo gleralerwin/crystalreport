@@ -45,18 +45,11 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-         <div id="ncccsearch" class="row" style="background-color: #FFFFFF; margin: 2px 2px 10px 2px; padding: 18px; border: 1px solid #A9A9A9; display: none;">
+         <div id="ncccsearch" class="row" style="background-color: #FFFFFF; margin: 2px 2px 10px 2px; padding: 18px; border: 1px solid #A9A9A9;">
               <div class="col-sm-2">
                 <div class="form-group">
                   <label>Select Brand</label>
-                  <p id=display></p>
-                  <select class="form-control" id="brand" name="brand" onchange="ncccGetDesc()"></select>    
-                </div>
-              </div>
-              <div class="col-sm-2">
-                <div class="form-group">
-                <label>Description</label>
-                  <select class="form-control" id="desc" name="desc"></select>    
+                  <select class="form-control" id="brand" name="brand"></select>    
                 </div>
               </div>
               <div class="col-sm-2">
@@ -66,10 +59,10 @@
                 </div>
               </div>
               <div class="col-sm-2">
-                  <div class="form-group">
-                      <label>SKU</label>
-                      <input type="text" name="sku" id="sku" class="form-control">
-                  </div>
+                <div class="form-group">
+                <label>PriceType</label>
+                  <select class="form-control" id="pricetype" name="pricetype"></select>    
+                </div>
               </div>
               <div class="col-sm-2" style="margin-top: 32px;">
                   <div class="form-group">
@@ -84,7 +77,6 @@
               <div class="card-header">
               <h3 class="card-title"> SKU LIST </h3>
               
-                <button class="btn btn-md btn-default float-right" onclick="ncccGetBrandName()"><i class="fa fa-search-plus"></i> Filter Search</button>
               </div><!-- /.card-header -->
 
               <div class="card-body">

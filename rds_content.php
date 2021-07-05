@@ -46,17 +46,11 @@
     <section class="content">
       <div class="container-fluid">
 
-         <div id="rds_search" class="row" style="background-color: #FFFFFF; margin: 2px 2px 10px 2px; padding: 18px; border: 1px solid #A9A9A9; display: none;">
+         <div id="rds_search" class="row" style="background-color: #FFFFFF; margin: 2px 2px 10px 2px; padding: 18px; border: 1px solid #A9A9A9;">
             <div class="col-sm-2">
               <div class="form-group">
                 <label>Select Brand</label>
                 <select class="form-control" id="brandname" name="brandname"></select>    
-              </div>
-            </div>
-            <div class="col-sm-2">
-              <div class="form-group">
-              <label>Description</label>
-                <select class="form-control" id="shortdesc" name="shortdesc" onchange="ncccdesc()"></select>    
               </div>
             </div>
             <div class="col-sm-2">
@@ -66,14 +60,17 @@
               </div>
             </div>
             <div class="col-sm-2">
-                <div class="form-group">
-                    <label>SKU</label>
-                    <input type="text" name="sku" id="sku" class="form-control">
-                </div>
+              <div class="form-group">
+              <label>PriceType</label>
+                <select class="form-control" id="rds_pricetype" name="rds_pricetype">
+                <option value="REG">REG</option>
+                <option value="MD">MD</option>
+                </select>    
+              </div>
             </div>
             <div class="col-sm-2" style="margin-top: 32px;">
                 <div class="form-group">
-                    <button class="btn btn-md btn-primary form-control" onclick="rdsSearch()">Search</button>
+                    <button class="btn btn-bg btn-primary form-control" onclick="rdsSearch()">Search</button>
                 </div>
             </div>
          </div>      
@@ -83,8 +80,6 @@
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">SKU LIST</h3>
-
-                <button class="btn btn-md btn-default float-right" onclick="rdssearch()"><i class="fa fa-search-plus"></i> Filter Search</button>
               </div>
               <!-- /.card-header -->
 

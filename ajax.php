@@ -12,12 +12,16 @@ elseif($function == 'ncccBrandName')
 {
     ncccBrandName();
 }
+elseif($function == 'ncccpricetype')
+{
+    ncccpricetype();
+}
 elseif($function == 'ncccsearch')
 {
     $brand = $_POST['brand'];
     $styleno = $_POST['styleno'];
-    $sku = $_POST['sku'];
-    ncccsearch($brand, $styleno, $sku);
+    $pricetype = $_POST['pricetype'];
+    ncccsearch($brand, $styleno, $pricetype);
 }
 elseif($function == 'nccc_desc')
 {
@@ -31,17 +35,19 @@ elseif($function == 'rdsBrandName')
 elseif($function == 'rdsSaveSearch')
 {
     $brandname = $_POST['brandname'];
-    $shortdesc = $_POST['shortdesc'];
     $styleno = $_POST['styleno'];
-    $sku = $_POST['sku'];
-    rdsSaveSearch($brandname, $shortdesc, $styleno, $sku);
+    $rds_pricetype = $_POST['rds_pricetype'];
+    rdsSaveSearch($brandname, $styleno, $rds_pricetype);
 }
 elseif($function == 'getDesc')
 {
     $getdesc =  $_POST['brand'];
     getDesc($getdesc);
 }
-
+// elseif($function == 'rdsPriceType')
+// {
+//     rdsPriceType();
+// }
 
 
 
@@ -80,6 +86,38 @@ function getskulist_nccc()
         ';
     }
 }
+
+//nccc pricetype
+function ncccpricetype()
+{
+    include './inc/nccc_db.php';
+    $sql = 'SELECT DISTINCT(PriceType) FROM tblsku ORDER BY PriceType DESC';
+    $result = sqlsrv_query($nccc_conn, $sql);
+   
+    while($row = sqlsrv_fetch_array($result))
+    {
+        $pricetype = $row['PriceType'];
+        echo '<option>'.$pricetype.'</option>';
+    }
+}
+
+//rds pricetype
+// function rdsPriceType()
+// {
+//     include './inc/rds_db.php';
+//     $sql = 'SELECT pricetype FROM vwMasterlistREG JOIN vwMasterlistMD ON vwMasterlistREG.SubDeptClass = vwMasterlistMD.SubDeptClass';
+
+//     // $sql = 'SELECT distinct(PriceType) from vwMasterlistREG';
+
+//     $result = sqlsrv_query($rds_conn, $sql);
+   
+//     while($row = sqlsrv_fetch_array($result))
+//     {
+//         $rdspricetype = $row['pricetype'];
+//         echo '<option>'.$rdspricetype.'</option>';
+//     }
+
+// }
 
 //fetch rds sku list
 function rdsSkuList()
@@ -142,13 +180,12 @@ function ncccBrandName()
     }
 }
 
-
 //NCCC customize search
-function ncccsearch($brand, $styleno, $sku)
+function ncccsearch($brand, $styleno, $pricetype)
 {
     include './inc/nccc_db.php';
    
-    $sql = "SELECT * FROM tblsku WHERE brand LIKE '%$brand%' AND styleno LIKE '%$styleno%' AND sku LIKE '%$sku%' ";
+    $sql = "SELECT * FROM tblsku WHERE brand LIKE '%$brand%' AND styleno LIKE '%$styleno%' AND pricetype LIKE '%$pricetype%' ";
     $result = sqlsrv_query($nccc_conn, $sql);
 
     // checked brand    
@@ -199,7 +236,7 @@ function ncccsearch($brand, $styleno, $sku)
         ';
        }
     }
-    elseif(isset($styleno) || isset($sku))
+    elseif(isset($styleno))
     {
         $i=1;
         while($rowstyleno = sqlsrv_fetch_array($result))
@@ -246,8 +283,52 @@ function ncccsearch($brand, $styleno, $sku)
         ';
        }
     } 
-    else {
-        echo "No Data Match !!!";
+    elseif(isset($pricetype)) 
+    {
+        $i=1;
+        while($rowstyleno = sqlsrv_fetch_array($result))
+       {
+        $brand = $rowstyleno['Brand'];
+        $desc = $rowstyleno['Descrip'];
+        $sizeset = $rowstyleno['SizeSet'];
+        $styleno = $rowstyleno['StyleNo'];
+        $buyercode = $rowstyleno['BuyerCode'];
+        $skutype = $rowstyleno['SKUType'];
+        $vendorcode = $rowstyleno['VendorCode'];
+        $srp = $rowstyleno['SRP'];
+        $upc = $rowstyleno['UPC'];
+        $uom = $rowstyleno['UoM'];
+        $sku = $rowstyleno['SKU'];
+        $dept = $rowstyleno['Dept'];
+        $subdept = $rowstyleno['SubDept'];
+        $class = $rowstyleno['Class'];
+        $subclass = $rowstyleno['SubClass'];
+        $entrydate = $rowstyleno['EntryDate']->format('Y/m/d');
+        $pricetype = $rowstyleno['PriceType'];
+
+        echo '
+        <tr>
+        <td>'.$i++.'</td>
+        <td>'.$brand.'</td>
+        <td>'.$desc.'</td>
+        <td>'.$sizeset.'</td>
+        <td>'.$styleno.'</td>
+        <td>'.$buyercode.'</td>
+        <td>'. $skutype.'</td>
+        <td>'.$vendorcode.'</td>
+        <td>'. $srp.'</td>
+        <td>'. $upc.'</td>
+        <td>'. $uom.'</td>
+        <td>'. $sku.'</td>
+        <td>'.$dept.'</td>
+        <td>'.$subdept.'</td>
+        <td>'.$class.'</td>
+        <td>'.$subclass.'</td>
+        <td>'.$entrydate.'</td>
+        <td>'.$pricetype.'</td>
+        </tr>
+        ';
+       }
     }
 
 }
@@ -267,100 +348,268 @@ function rdsBrandName()
 }
 
 // RDS customize search
-function rdsSaveSearch($brandname, $shortdesc, $styleno, $sku)
+function rdsSaveSearch($brandname, $styleno, $rds_pricetype)
 {
-    include './inc/rds_db.php';
-   
-    $sql = "SELECT * FROM vwMasterlistREG WHERE brandname LIKE '%$brandname%' AND shortdesc LIKE '%$shortdesc%' AND styleno LIKE '%$styleno%' AND sku LIKE '%$sku%' ";
-    $result = sqlsrv_query($rds_conn, $sql);
-
-    // checked brand    
-    if($brandname)
+    if($rds_pricetype == 'REG')
     {
-       $i=1;
-       while($rowbrandname = sqlsrv_fetch_array($result))
-       {
-        $subdeptclass = $rowbrandname['SubDeptClass'];
-        $sku = $rowbrandname['SKU'];
-        $upc = $rowbrandname['UPC'];
-        $mfno = $rowbrandname['MFno'];
-        $styleno = $rowbrandname['StyleNo'];
-        $itemdesc = $rowbrandname['ItemDesc'];
-        $shortdesc = $rowbrandname['ShortDesc'];
-        $brandname = $rowbrandname['BrandName'];
-        $buyercode = $rowbrandname['BuyerCode'];
-        $origprice = $rowbrandname['OrigPrice'];
-        $pricetype = $rowbrandname['PriceType'];
-        $createdate = $rowbrandname['CreateDate']->format('Y/m/d');
-        $irmsname = $rowbrandname['IRMSName'];
-        $vendorcode = $rowbrandname['VendorCode'];
-        
-        echo '
-        <tr>
-        <td>'.$i++.'</td>
-        <td>'.$brandname.'</td>
-        <td>'.$shortdesc.'</td>
-        <td>'.$itemdesc.'</td>
-        <td>'.$sku.'</td>
-        <td>'.$upc.'</td>
-        <td>'. $mfno.'</td>
-        <td>'.$styleno.'</td>
-        <td>'. $buyercode.'</td>
-        <td>'. $origprice.'</td>
-        <td>'. $pricetype.'</td>
-        <td>'. $createdate.'</td>
-        <td>'.$irmsname.'</td>
-        <td>'.$vendorcode.'</td>
-        <td>'.$subdeptclass.'</td>
-        </tr>
-        ';
-       }
+        include './inc/rds_db.php';
+        $sql = "SELECT * FROM vwMasterlistREG WHERE brandname LIKE '%$brandname%' AND styleno LIKE '%$styleno%' AND pricetype LIKE '%$rds_pricetype%' ";
+        $result = sqlsrv_query($rds_conn, $sql);
+
+        if(isset($brandname))
+        {
+           $i=1;
+           while($rowbrandname = sqlsrv_fetch_array($result))
+           {
+            $subdeptclass = $rowbrandname['SubDeptClass'];
+            $sku = $rowbrandname['SKU'];
+            $upc = $rowbrandname['UPC'];
+            $mfno = $rowbrandname['MFno'];
+            $styleno = $rowbrandname['StyleNo'];
+            $itemdesc = $rowbrandname['ItemDesc'];
+            $shortdesc = $rowbrandname['ShortDesc'];
+            $brandname = $rowbrandname['BrandName'];
+            $buyercode = $rowbrandname['BuyerCode'];
+            $origprice = $rowbrandname['OrigPrice'];
+            $pricetype = $rowbrandname['PriceType'];
+            $createdate = $rowbrandname['CreateDate']->format('Y/m/d');
+            $irmsname = $rowbrandname['IRMSName'];
+            $vendorcode = $rowbrandname['VendorCode'];
+            
+            echo '
+            <tr>
+            <td>'.$i++.'</td>
+            <td>'.$brandname.'</td>
+            <td>'.$shortdesc.'</td>
+            <td>'.$itemdesc.'</td>
+            <td>'.$sku.'</td>
+            <td>'.$upc.'</td>
+            <td>'. $mfno.'</td>
+            <td>'.$styleno.'</td>
+            <td>'. $buyercode.'</td>
+            <td>'. $origprice.'</td>
+            <td>'. $pricetype.'</td>
+            <td>'. $createdate.'</td>
+            <td>'.$irmsname.'</td>
+            <td>'.$vendorcode.'</td>
+            <td>'.$subdeptclass.'</td>
+            </tr>
+            ';
+           }
+        }
+        elseif(isset($styleno))
+        {
+            $i=1;
+            while($rowstyleno = sqlsrv_fetch_array($result))
+           {
+            $subdeptclass = $rowstyleno['SubDeptClass'];
+            $sku = $rowstyleno['SKU'];
+            $upc = $rowstyleno['UPC'];
+            $mfno = $rowstyleno['MFno'];
+            $styleno = $rowstyleno['StyleNo'];
+            $itemdesc = $rowstyleno['ItemDesc'];
+            $shortdesc = $rowstyleno['ShortDesc'];
+            $brandname = $rowstyleno['BrandName'];
+            $buyercode = $rowstyleno['BuyerCode'];
+            $origprice = $rowstyleno['OrigPrice'];
+            $pricetype = $rowstyleno['PriceType'];
+            $createdate = $rowstyleno['CreateDate']->format('Y/m/d');
+            $irmsname = $rowstyleno['IRMSName'];
+            $vendorcode = $rowstyleno['VendorCode'];
+    
+            echo '
+            <tr>
+            <td>'.$i++.'</td>
+            <td>'.$brandname.'</td>
+            <td>'.$shortdesc.'</td>
+            <td>'.$itemdesc.'</td>
+            <td>'.$sku.'</td>
+            <td>'.$upc.'</td>
+            <td>'. $mfno.'</td>
+            <td>'.$styleno.'</td>
+            <td>'. $buyercode.'</td>
+            <td>'. $origprice.'</td>
+            <td>'. $pricetype.'</td>
+            <td>'. $createdate.'</td>
+            <td>'.$irmsname.'</td>
+            <td>'.$vendorcode.'</td>
+            <td>'.$subdeptclass.'</td>
+            </tr>
+            ';
+           }
+        } 
+        elseif(isset($rds_pricetype)) 
+        {
+            $i=1;
+            while($row_rdspricetype = sqlsrv_fetch_array($result))
+           {
+            $subdeptclass = $row_rdspricetype['SubDeptClass'];
+            $sku = $row_rdspricetype['SKU'];
+            $upc = $row_rdspricetype['UPC'];
+            $mfno = $row_rdspricetype['MFno'];
+            $styleno = $row_rdspricetype['StyleNo'];
+            $itemdesc = $row_rdspricetype['ItemDesc'];
+            $shortdesc = $row_rdspricetype['ShortDesc'];
+            $brandname = $row_rdspricetype['BrandName'];
+            $buyercode = $row_rdspricetype['BuyerCode'];
+            $origprice = $row_rdspricetype['OrigPrice'];
+            $pricetype = $row_rdspricetype['PriceType'];
+            $createdate = $row_rdspricetype['CreateDate']->format('Y/m/d');
+            $irmsname = $row_rdspricetype['IRMSName'];
+            $vendorcode = $row_rdspricetype['VendorCode'];
+    
+            echo '
+            <tr>
+            <td>'.$i++.'</td>
+            <td>'.$brandname.'</td>
+            <td>'.$shortdesc.'</td>
+            <td>'.$itemdesc.'</td>
+            <td>'.$sku.'</td>
+            <td>'.$upc.'</td>
+            <td>'. $mfno.'</td>
+            <td>'.$styleno.'</td>
+            <td>'. $buyercode.'</td>
+            <td>'. $origprice.'</td>
+            <td>'. $pricetype.'</td>
+            <td>'. $createdate.'</td>
+            <td>'.$irmsname.'</td>
+            <td>'.$vendorcode.'</td>
+            <td>'.$subdeptclass.'</td>
+            </tr>
+            ';
+           }
+        }
     }
-    elseif(isset($styleno) || isset($sku))
+    elseif($rds_pricetype == 'MD')
     {
-        $i=1;
-        while($rowstyleno = sqlsrv_fetch_array($result))
-       {
-        $subdeptclass = $rowbrandname['SubDeptClass'];
-        $sku = $rowbrandname['SKU'];
-        $upc = $rowbrandname['UPC'];
-        $mfno = $rowbrandname['MFno'];
-        $styleno = $rowbrandname['StyleNo'];
-        $itemdesc = $rowbrandname['ItemDesc'];
-        $shortdesc = $rowbrandname['ShortDesc'];
-        $brandname = $rowbrandname['BrandName'];
-        $buyercode = $rowbrandname['BuyerCode'];
-        $origprice = $rowbrandname['OrigPrice'];
-        $pricetype = $rowbrandname['PriceType'];
-        $createdate = $rowbrandname['CreateDate']->format('Y/m/d');
-        $irmsname = $rowbrandname['IRMSName'];
-        $vendorcode = $rowbrandname['VendorCode'];
+        include './inc/rds_db.php';
+        $sql = "SELECT * FROM vwMasterlistMD WHERE brandname LIKE '%$brandname%' AND styleno LIKE '%$styleno%' AND pricetype LIKE '%$rds_pricetype%' ";
+        $result = sqlsrv_query($rds_conn, $sql);
 
-        echo '
-        <tr>
-        <td>'.$i++.'</td>
-        <td>'.$brandname.'</td>
-        <td>'.$shortdesc.'</td>
-        <td>'.$itemdesc.'</td>
-        <td>'.$sku.'</td>
-        <td>'.$upc.'</td>
-        <td>'. $mfno.'</td>
-        <td>'.$styleno.'</td>
-        <td>'. $buyercode.'</td>
-        <td>'. $origprice.'</td>
-        <td>'. $pricetype.'</td>
-        <td>'. $createdate.'</td>
-        <td>'.$irmsname.'</td>
-        <td>'.$vendorcode.'</td>
-        <td>'.$subdeptclass.'</td>
-        </tr>
-        ';
-       }
-    } 
-    else {
-        echo "No Data Match !!!";
+        if(isset($brandname))
+        {
+           $i=1;
+           while($rowbrandname = sqlsrv_fetch_array($result))
+           {
+            $subdeptclass = $rowbrandname['SubDeptClass'];
+            $sku = $rowbrandname['SKU'];
+            $upc = $rowbrandname['UPC'];
+            $mfno = $rowbrandname['MFno'];
+            $styleno = $rowbrandname['StyleNo'];
+            $itemdesc = $rowbrandname['ItemDesc'];
+            $shortdesc = $rowbrandname['ShortDesc'];
+            $brandname = $rowbrandname['BrandName'];
+            $buyercode = $rowbrandname['BuyerCode'];
+            $origprice = $rowbrandname['OrigPrice'];
+            $pricetype = $rowbrandname['PriceType'];
+            $createdate = $rowbrandname['CreateDate']->format('Y/m/d');
+            $irmsname = $rowbrandname['IRMSName'];
+            $vendorcode = $rowbrandname['VendorCode'];
+            
+            echo '
+            <tr>
+            <td>'.$i++.'</td>
+            <td>'.$brandname.'</td>
+            <td>'.$shortdesc.'</td>
+            <td>'.$itemdesc.'</td>
+            <td>'.$sku.'</td>
+            <td>'.$upc.'</td>
+            <td>'. $mfno.'</td>
+            <td>'.$styleno.'</td>
+            <td>'. $buyercode.'</td>
+            <td>'. $origprice.'</td>
+            <td>'. $pricetype.'</td>
+            <td>'. $createdate.'</td>
+            <td>'.$irmsname.'</td>
+            <td>'.$vendorcode.'</td>
+            <td>'.$subdeptclass.'</td>
+            </tr>
+            ';
+           }
+        }
+        elseif(isset($styleno))
+        {
+            $i=1;
+            while($rowstyleno = sqlsrv_fetch_array($result))
+           {
+            $subdeptclass = $rowstyleno['SubDeptClass'];
+            $sku = $rowstyleno['SKU'];
+            $upc = $rowstyleno['UPC'];
+            $mfno = $rowstyleno['MFno'];
+            $styleno = $rowstyleno['StyleNo'];
+            $itemdesc = $rowstyleno['ItemDesc'];
+            $shortdesc = $rowstyleno['ShortDesc'];
+            $brandname = $rowstyleno['BrandName'];
+            $buyercode = $rowstyleno['BuyerCode'];
+            $origprice = $rowstyleno['OrigPrice'];
+            $pricetype = $rowstyleno['PriceType'];
+            $createdate = $rowstyleno['CreateDate']->format('Y/m/d');
+            $irmsname = $rowstyleno['IRMSName'];
+            $vendorcode = $rowstyleno['VendorCode'];
+    
+            echo '
+            <tr>
+            <td>'.$i++.'</td>
+            <td>'.$brandname.'</td>
+            <td>'.$shortdesc.'</td>
+            <td>'.$itemdesc.'</td>
+            <td>'.$sku.'</td>
+            <td>'.$upc.'</td>
+            <td>'. $mfno.'</td>
+            <td>'.$styleno.'</td>
+            <td>'. $buyercode.'</td>
+            <td>'. $origprice.'</td>
+            <td>'. $pricetype.'</td>
+            <td>'. $createdate.'</td>
+            <td>'.$irmsname.'</td>
+            <td>'.$vendorcode.'</td>
+            <td>'.$subdeptclass.'</td>
+            </tr>
+            ';
+           }
+        } 
+        elseif(isset($rds_pricetype)) 
+        {
+            $i=1;
+            while($row_rdspricetype = sqlsrv_fetch_array($result))
+           {
+            $subdeptclass = $row_rdspricetype['SubDeptClass'];
+            $sku = $row_rdspricetype['SKU'];
+            $upc = $row_rdspricetype['UPC'];
+            $mfno = $row_rdspricetype['MFno'];
+            $styleno = $row_rdspricetype['StyleNo'];
+            $itemdesc = $row_rdspricetype['ItemDesc'];
+            $shortdesc = $row_rdspricetype['ShortDesc'];
+            $brandname = $row_rdspricetype['BrandName'];
+            $buyercode = $row_rdspricetype['BuyerCode'];
+            $origprice = $row_rdspricetype['OrigPrice'];
+            $pricetype = $row_rdspricetype['PriceType'];
+            $createdate = $row_rdspricetype['CreateDate']->format('Y/m/d');
+            $irmsname = $row_rdspricetype['IRMSName'];
+            $vendorcode = $row_rdspricetype['VendorCode'];
+    
+            echo '
+            <tr>
+            <td>'.$i++.'</td>
+            <td>'.$brandname.'</td>
+            <td>'.$shortdesc.'</td>
+            <td>'.$itemdesc.'</td>
+            <td>'.$sku.'</td>
+            <td>'.$upc.'</td>
+            <td>'. $mfno.'</td>
+            <td>'.$styleno.'</td>
+            <td>'. $buyercode.'</td>
+            <td>'. $origprice.'</td>
+            <td>'. $pricetype.'</td>
+            <td>'. $createdate.'</td>
+            <td>'.$irmsname.'</td>
+            <td>'.$vendorcode.'</td>
+            <td>'.$subdeptclass.'</td>
+            </tr>
+            ';
+           }
+        }
     }
-
 }
 
 function getDesc($getdesc)

@@ -4,7 +4,7 @@ include '../PHPExcel/Classes/PHPExcel.php';
 // include '../PHPExcel/Classes/PHPExcel/IOFactory.php';
 // include '../PHPExcel/Classes/PHPExcel/Writer/Excel5.php';
 
-$sql = 'SELECT * FROM tblSKU ORDER BY id ASC';
+$sql = 'SELECT * FROM tblMDsku ORDER BY id ASC';
 $result = sqlsrv_query($nccc_conn, $sql);
 
 $resultPHPExcel	= new PHPExcel();
@@ -13,7 +13,7 @@ $resultPHPExcel->getActiveSheet()->setCellValue('A1', 'Brand');
 $resultPHPExcel->getActiveSheet()->setCellValue('B1', 'Descrip');
 $resultPHPExcel->getActiveSheet()->setCellValue('C1', 'StyleNo');
 $resultPHPExcel->getActiveSheet()->setCellValue('D1', 'BuyerCode');
-$resultPHPExcel->getActiveSheet()->setCellValue('E1', 'SKUType');
+$resultPHPExcel->getActiveSheet()->setCellValue('E1', 'SKUtype');
 $resultPHPExcel->getActiveSheet()->setCellValue('F1', 'VendorCode');
 $resultPHPExcel->getActiveSheet()->setCellValue('G1', 'SRP');
 $resultPHPExcel->getActiveSheet()->setCellValue('H1', 'UPC');
@@ -31,7 +31,7 @@ while($item = sqlsrv_fetch_array($result)){
 	$resultPHPExcel->getActiveSheet()->setCellValue('B' . $i, $item['Descrip']);
 	$resultPHPExcel->getActiveSheet()->setCellValue('C' . $i, $item['StyleNo']);
     $resultPHPExcel->getActiveSheet()->setCellValue('D' . $i, $item['BuyerCode']);
-    $resultPHPExcel->getActiveSheet()->setCellValue('E' . $i, $item['SKUType']);
+    $resultPHPExcel->getActiveSheet()->setCellValue('E' . $i, $item['SKUtype']);
     $resultPHPExcel->getActiveSheet()->setCellValue('F' . $i, $item['VendorCode']);
     $resultPHPExcel->getActiveSheet()->setCellValue('G' . $i, $item['SRP']);
     $resultPHPExcel->getActiveSheet()->setCellValue('H' . $i, $item['UPC']);

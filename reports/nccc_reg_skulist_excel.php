@@ -4,7 +4,7 @@ include '../PHPExcel/Classes/PHPExcel.php';
 // include '../PHPExcel/Classes/PHPExcel/IOFactory.php';
 // include '../PHPExcel/Classes/PHPExcel/Writer/Excel5.php';
 
-$sql = 'SELECT * FROM tblSKU ORDER BY id ASC';
+$sql = "SELECT * FROM tblSKU WHERE PriceType LIKE '%REG%' ORDER BY id ASC";
 $result = sqlsrv_query($nccc_conn, $sql);
 
 $resultPHPExcel	= new PHPExcel();

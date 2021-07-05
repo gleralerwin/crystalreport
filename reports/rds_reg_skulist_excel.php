@@ -23,8 +23,7 @@ $resultPHPExcel->getActiveSheet()->setCellValue('K1', 'PriceType');
 $resultPHPExcel->getActiveSheet()->setCellValue('L1', 'CreateDate');
 $resultPHPExcel->getActiveSheet()->setCellValue('M1', 'IRMSName');
 $resultPHPExcel->getActiveSheet()->setCellValue('N1', 'VendorCode');
-// $resultPHPExcel->getActiveSheet()->setCellValue('O1', 'MD');
-// $resultPHPExcel->getActiveSheet()->setCellValue('P1', 'REG');
+$resultPHPExcel->getActiveSheet()->setCellValue('O1', 'REG');
 
 $i = 2;
 
@@ -43,8 +42,7 @@ while($item = sqlsrv_fetch_array($result)){
     $resultPHPExcel->getActiveSheet()->setCellValue('L' . $i, $item['CreateDate']);
     $resultPHPExcel->getActiveSheet()->setCellValue('M' . $i, $item['IRMSName']);
     $resultPHPExcel->getActiveSheet()->setCellValue('N' . $i, $item['VendorCode']);
-    // $resultPHPExcel->getActiveSheet()->setCellValue('O' . $i, $item['MD']);
-    // $resultPHPExcel->getActiveSheet()->setCellValue('P' . $i, $item['REG']);
+    $resultPHPExcel->getActiveSheet()->setCellValue('O' . $i, $item['OrigPrice']);
 	$i ++;
 }
 

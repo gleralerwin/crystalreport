@@ -25,6 +25,42 @@ function fetch_nccc_list()
 }
 fetch_nccc_list();
 
+//get NCCC pricetype
+function ncccgetPriceType()
+{
+    $.ajax({
+        url: 'ajax.php',
+        type: 'post',
+        dataType: 'text',
+        data: {function: 'ncccpricetype'},
+        success: function(data)
+        {
+            console.log(data);
+            $('#pricetype').empty();
+            $('#pricetype').append(data);
+        }
+    });
+}
+ncccgetPriceType();
+
+//get RDS pricetype
+// function rdsGetPriceType()
+// {
+//     $.ajax({
+//         url: 'ajax.php',
+//         type: 'post',
+//         dataType: 'text',
+//         data: {function: 'rdsPriceType'},
+//         success: function(data)
+//         {
+//             console.log(data);
+//             $('#rds_pricetype').empty();
+//             $('#rds_pricetype').append(data);
+//         }
+//     });
+// }
+// rdsGetPriceType();
+
 //rds sku list
 function fetch_rdslist()
 {
@@ -94,16 +130,44 @@ function Rds_RegExport()
     }    
 }
 
-//export rds REG skulist
+//export rds MD skulist
 function Rds_MdExport()
 {
-    var retVal = confirm("Want To Download in Excel (REG) ?");
+    var retVal = confirm("Want To Download in Excel (MD) ?");
     if( retVal == true ) {
         window.location.href = './reports/rds_md_skulist_excel.php';
        return true;
     }
     else {
        window.location.href = 'rds.php';
+       return false;
+    }    
+}
+
+//export SM REG skulist
+function sm_RegExport()
+{
+    var retVal = confirm("Want To Download in Excel (REG) ?");
+    if( retVal == true ) {
+        window.location.href = './reports/sm_reg_skulist_excel.php';
+       return true;
+    }
+    else {
+       window.location.href = 'sm.php';
+       return false;
+    }    
+}
+
+//export SM MD skulist
+function sm_MdExport()
+{
+    var retVal = confirm("Want To Download in Excel (MD) ?");
+    if( retVal == true ) {
+        window.location.href = './reports/sm_md_skulist_excel.php';
+       return true;
+    }
+    else {
+       window.location.href = 'sm.php';
        return false;
     }    
 }
@@ -118,13 +182,14 @@ function ncccGetBrandName()
         data:{function: 'ncccBrandName'},
         success: function(data)
         {
-            // console.log(data);
-            $('#ncccsearch').toggle('fast');
+            console.log(data);
+            // $('#ncccsearch').toggle('fast');
             $('#brand').empty();
             $('#brand').append(data);
         }
     });
 }
+ncccGetBrandName();
 
 //nccc get description
 function ncccGetDesc()
@@ -151,10 +216,10 @@ function ncccGetDesc()
 //nccc search
 function ncccSearch()
 {
-    var brand = $('#brand').val();
-    var styleno = $('#styleno').val();
-    var sku = $('#sku').val();
-
+    let brand = $('#brand').val();
+    let styleno = $('#styleno').val();
+    let pricetype = $('#pricetype').val();
+   
     $.ajax({
         url: 'ajax.php',
         type: 'post',
@@ -162,7 +227,7 @@ function ncccSearch()
         data:{
             brand:brand,
             styleno:styleno,
-            sku:sku,
+            pricetype:pricetype,
             function: 'ncccsearch'
         },
         beforeSend: function()
@@ -195,20 +260,19 @@ function rdssearch()
         success: function(data)
         {
             // console.log(data);
-            $('#rds_search').toggle('fast');
             $('#brandname').empty();
             $('#brandname').append(data);
         }
     });
 }
+rdssearch();
 
 //nccc search
 function rdsSearch()
 {
     let brandname = $('#brandname').val();
-    let shortdesc = $('#shortdesc').val();
     let styleno = $('#styleno').val();
-    let sku = $('#sku').val();
+    let rds_pricetype = $('#rds_pricetype').val();
 
     $.ajax({
         url: 'ajax.php',
@@ -216,9 +280,8 @@ function rdsSearch()
         dataType: 'text',
         data:{
             brandname:brandname,
-            shortdesc:shortdesc,
             styleno:styleno,
-            sku:sku,
+            rds_pricetype:rds_pricetype,
             function: 'rdsSaveSearch'
         },
         beforeSend: function()
