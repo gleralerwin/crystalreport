@@ -133,7 +133,7 @@
                     <th>SubDeptClass</th>
                   </tr>
               </tfoot>
-                  <tbody id="rdslist" style="display: none;"></tbody>
+                  <tbody id="rdslist"></tbody>
                   <tbody id="rds_searchlist" style="display: none;"></tbody>
                 </table>
 

@@ -9,7 +9,7 @@ $result = sqlsrv_query($sm_conn, $sql);
 
 $resultPHPExcel	= new PHPExcel();
 
-$resultPHPExcel->getActiveSheet()->setCellValue('A1', 'bradname');
+$resultPHPExcel->getActiveSheet()->setCellValue('A1', 'brandname');
 $resultPHPExcel->getActiveSheet()->setCellValue('B1', 'vend_code');
 $resultPHPExcel->getActiveSheet()->setCellValue('C1', 'dept');
 $resultPHPExcel->getActiveSheet()->setCellValue('D1', 'subdept');

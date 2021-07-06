@@ -17,11 +17,11 @@ $resultPHPExcel->getActiveSheet()->setCellValue('E1', 'subclass');
 $resultPHPExcel->getActiveSheet()->setCellValue('F1', 'brand_code');
 $resultPHPExcel->getActiveSheet()->setCellValue('G1', 'stk_desc');
 $resultPHPExcel->getActiveSheet()->setCellValue('H1', 'styleno');
-// $resultPHPExcel->getActiveSheet()->setCellValue('I1', 'unit_retl ');
+$resultPHPExcel->getActiveSheet()->setCellValue('I1', 'unit_retl ');
 $resultPHPExcel->getActiveSheet()->setCellValue('J1', 'vendor_upc');
 $resultPHPExcel->getActiveSheet()->setCellValue('K1', 'sm_upc');
 $resultPHPExcel->getActiveSheet()->setCellValue('L1', 'stk_code');
-// $resultPHPExcel->getActiveSheet()->setCellValue('M1', 'irmsBrand ');
+$resultPHPExcel->getActiveSheet()->setCellValue('M1', 'irmsBrand ');
 $resultPHPExcel->getActiveSheet()->setCellValue('N1', 'ap_type');
 
 $i = 2;
@@ -35,11 +35,11 @@ while($item = sqlsrv_fetch_array($result)){
     $resultPHPExcel->getActiveSheet()->setCellValue('F' . $i, $item['brand_code']);
     $resultPHPExcel->getActiveSheet()->setCellValue('G' . $i, $item['stk_desc']);
     $resultPHPExcel->getActiveSheet()->setCellValue('H' . $i, $item['styleno']);
-    // $resultPHPExcel->getActiveSheet()->setCellValue('I' . $i, $item['unit_retl']);
+    $resultPHPExcel->getActiveSheet()->setCellValue('I' . $i, $item['REG']);
     $resultPHPExcel->getActiveSheet()->setCellValue('J' . $i, $item['vendor_upc']);
     $resultPHPExcel->getActiveSheet()->setCellValue('K' . $i, $item['sm_upc']);
     $resultPHPExcel->getActiveSheet()->setCellValue('L' . $i, $item['stk_code']);
-    // $resultPHPExcel->getActiveSheet()->setCellValue('M' . $i, $item['irmsBrand']);
+    $resultPHPExcel->getActiveSheet()->setCellValue('M' . $i, $item['BrandName']);
     $resultPHPExcel->getActiveSheet()->setCellValue('N' . $i, $item['AP_Type']);
 	$i ++;
 }

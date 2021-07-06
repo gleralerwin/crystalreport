@@ -49,7 +49,7 @@
               <div class="col-sm-2">
                 <div class="form-group">
                   <label>Select Brand</label>
-                  <select class="form-control" id="brand" name="brand"></select>    
+                  <select class="form-control" id="brandname" name="brandname"></select>    
                 </div>
               </div>
               <div class="col-sm-2">
@@ -61,12 +61,15 @@
               <div class="col-sm-2">
                 <div class="form-group">
                 <label>PriceType</label>
-                  <select class="form-control" id="pricetype" name="pricetype"></select>    
+                  <select class="form-control" id="pricetype" name="pricetype">
+                  <option value="REG">REG</option>
+                  <option value="MD">MD</option>
+                  </select>    
                 </div>
               </div>
               <div class="col-sm-2" style="margin-top: 32px;">
                   <div class="form-group">
-                    <button class="btn btn-md btn-primary form-control" onclick="ncccSearch()">Search</button>
+                    <button class="btn btn-md btn-primary form-control" onclick="smSearch()">Search</button>
                   </div>
               </div>
           </div>
@@ -81,74 +84,170 @@
 
               <div class="card-body">
 
-              <button id="nccc_searchloader" class="btn btn-primary" style="display: none;">
+              <button id="sm_searchloader" class="btn btn-primary" style="display: none;">
                 <span class="spinner-border spinner-border-sm"></span> Loading..
               </button>
 
-              <table class="table table-bordered table-striped" style="width: 100%;">
-
+              <!-- table SM default list display all reg and md -->
+              <table class="table table-bordered table-striped" style="width: 100%;" id="sm_defaultlist">
               <button class="btn btn-bg btn-success float-right" onclick="sm_MdExport()">Export To Excel ( MD ) <i class="fa fa-download"></i></button>
               <button class="btn btn-bg btn-info float-right" onclick="sm_RegExport()" style="margin-right: 5px;">Export To Excel ( REG ) <i class="fa fa-download"></i></button>
 
-              <div id="dropdownSearch" style="display: none;">
-                <div class="dropdown">
-                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-                <span class="caret"></span></button>
-                <ul class="dropdown-menu">
-                  <li><a href="#">HTML</a></li>
-                  <li><a href="#">CSS</a></li>
-                  <li><a href="#">JavaScript</a></li>
-                </ul>
-                </div>
-              </div>
-
               <br><br>
+
                 <thead>
                     <tr>
                         <th>#</th>
+                        <th>VendCode</th>
+                        <th>REG</th>
+                        <th>MD</th>
+                        <th>Cost</th>
                         <th>Brand</th>
-                        <th>Desc</th>
-                        <th>SizeSet</th>
-                        <th>StyleNo</th>
-                        <th>BuyerCode</th>
-                        <th>SKUType</th>
-                        <th>VendorCode</th>
-                        <th>SRP</th>
-                        <th>UPC</th>
-                        <th>Uom</th>
-                        <th>SKU</th>
+                        <th>AP_Type</th>
                         <th>Dept</th>
-                        <th>SubDept</th>
+                        <th>Subdept</th>
                         <th>Class</th>
-                        <th>SubClass</th>
-                        <th>EntryDate</th>
-                        <th>PriceType</th>
+                        <th>Subclass</th>
+                        <th>Styleno</th>
+                        <th>SKU Type</th>
+                        <th>InSKU</th>
+                        <th>Stylesize</th>
+                        <th>Sm_upc</th>
+                        <th>Vendor_upc</th>
+                        <th>Stk_code</th>
+                        <th>Stylecolor</th>
+                        <th>Entrydate</th>
+                        <th>Category</th>
+                        <th>Styledesc</th>
+                        <th>Brandcode</th>
+                        <th>Stk_desc</th>
                     </tr>
                 </thead>
+                <tbody id="sm_default_list"></tbody>
+                <tfoot>
+                  <tr>
+                  <th>#</th>
+                        <th>VendCode</th>
+                        <th>REG</th>
+                        <th>MD</th>
+                        <th>Cost</th>
+                        <th>Brand</th>
+                        <th>AP_Type</th>
+                        <th>Dept</th>
+                        <th>Subdept</th>
+                        <th>Class</th>
+                        <th>Subclass</th>
+                        <th>Styleno</th>
+                        <th>SKU Type</th>
+                        <th>InSKU</th>
+                        <th>Stylesize</th>
+                        <th>Sm_upc</th>
+                        <th>Vendor_upc</th>
+                        <th>Stk_code</th>
+                        <th>Stylecolor</th>
+                        <th>Entrydate</th>
+                        <th>Category</th>
+                        <th>Styledesc</th>
+                        <th>Brandcode</th>
+                        <th>Stk_desc</th>
+                  </tr>
+              </tfoot>
+            </table>
+
+             <!-- table SM REG list (Regular price only ) -->
+            <table class="table table-bordered table-striped" style="width: 100%; display: none;" id="sm_reglist">
+              <!-- <button class="btn btn-bg btn-success float-right" onclick="sm_MdExport()">Export To Excel ( MD ) <i class="fa fa-download"></i></button>
+              <button class="btn btn-bg btn-info float-right" onclick="sm_RegExport()" style="margin-right: 5px;">Export To Excel ( REG ) <i class="fa fa-download"></i></button> -->
+
+              <br><br>
+
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>BrandName</th>
+                        <th>Vendo_Code</th>
+                        <th>Dept</th>
+                        <th>Subdept</th>
+                        <th>Class</th>
+                        <th>Subclass</th>
+                        <th>Stk_code</th>
+                        <th>Sm_upc</th>
+                        <th>Styleno</th>
+                        <th>Styledesc</th>
+                        <th>Stylecolor</th>
+                        <th>Stylesize</th>
+                        <th>REG</th>
+                        <th>SKUdate</th>
+                    </tr>
+                </thead>
+                <tbody id="display_sm_reglist" style="display: none;"></tbody>
                 <tfoot>
                   <tr>
                         <th>#</th>
-                        <th>Brand</th>
-                        <th>Desc</th>
-                        <th>SizeSet</th>
-                        <th>StyleNo</th>
-                        <th>BuyerCode</th>
-                        <th>SKUType</th>
-                        <th>VendorCode</th>
-                        <th>SRP</th>
-                        <th>UPC</th>
-                        <th>Uom</th>
-                        <th>SKU</th>
+                        <th>BrandName</th>
+                        <th>Vendo_Code</th>
                         <th>Dept</th>
-                        <th>SubDept</th>
+                        <th>Subdept</th>
                         <th>Class</th>
-                        <th>SubClass</th>
-                        <th>EntryDate</th>
-                        <th>PriceType</th>
+                        <th>Subclass</th>
+                        <th>Stk_code</th>
+                        <th>Sm_upc</th>
+                        <th>Styleno</th>
+                        <th>Styledesc</th>
+                        <th>Stylecolor</th>
+                        <th>Stylesize</th>
+                        <th>REG</th>
+                        <th>SKUdate</th>
                   </tr>
               </tfoot>
-              <tbody id="nccc_list" style="display: none;"></tbody>
-              <tbody id="nccc_search" style="display: none;"></tbody>
+            </table>
+
+             <!-- table SM MD list (Markdown only ) -->
+            <table class="table table-bordered table-striped" style="width: 100%; display: none;" id="sm_mdlist">
+              <!-- <button class="btn btn-bg btn-success float-right" onclick="sm_MdExport()">Export To Excel ( MD ) <i class="fa fa-download"></i></button>
+              <button class="btn btn-bg btn-info float-right" onclick="sm_RegExport()" style="margin-right: 5px;">Export To Excel ( REG ) <i class="fa fa-download"></i></button> -->
+
+              <br><br>
+
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Vendo_Code</th>
+                        <th>Dept</th>
+                        <th>Subdept</th>
+                        <th>Class</th>
+                        <th>Subclass</th>
+                        <th>Brandcode</th>
+                        <th>Stk_desc</th>
+                        <th>Styleno</th>
+                        <th>Unit_retl</th>
+                        <th>Vendor_upc</th>
+                        <th>Sm_upc</th>
+                        <th>Stk_Code</th>
+                        <th>IRMS Brand</th>
+                        <th>AP_Type</th>
+                    </tr>
+                </thead>
+                <tbody id="display_sm_mdlist" style="display: none;"></tbody>
+                <tfoot>
+                  <tr>
+                        <th>#</th>
+                        <th>Vendo_Code</th>
+                        <th>Dept</th>
+                        <th>Subdept</th>
+                        <th>Class</th>
+                        <th>Subclass</th>
+                        <th>Brandcode</th>
+                        <th>Stk_desc</th>
+                        <th>Styleno</th>
+                        <th>Unit_retl</th>
+                        <th>Vendor_upc</th>
+                        <th>Sm_upc</th>
+                        <th>Stk_Code</th>
+                        <th>IRMS Brand</th>
+                        <th>AP_Type</th>
+                  </tr>
+              </tfoot>
             </table>
 
               </div>
@@ -163,7 +262,7 @@
         <!-- /.row -->
 
         <!-- NCCC list loader -->
-        <div id="nccc_loader" class="container loader"></div>
+        <div id="sm_loader" class="container loader"></div>
 
       </div>
       <!-- /.container-fluid -->

@@ -44,6 +44,21 @@ elseif($function == 'getDesc')
     $getdesc =  $_POST['brand'];
     getDesc($getdesc);
 }
+elseif($function == 'smlist')
+{
+    smlist();
+}
+elseif($function == 'smSaveSearch')
+{
+    $brandname = $_POST['brandname'];
+    $styleno = $_POST['styleno'];
+    $pricetype = $_POST['pricetype'];
+    smSaveSearch($brandname, $styleno, $pricetype);
+}
+elseif($function == 'smBrandName')
+{
+    smBrandName();
+}
 // elseif($function == 'rdsPriceType')
 // {
 //     rdsPriceType();
@@ -57,7 +72,7 @@ elseif($function == 'getDesc')
 function getskulist_nccc()
 {
     include './inc/nccc_db.php';
-    $sql = 'SELECT * FROM tblSKU ORDER BY id DESC';
+    $sql = 'SELECT * FROM tblSKU ORDER BY Brand ASC';
     $result = sqlsrv_query($nccc_conn, $sql);
 
     $i=1;
@@ -123,7 +138,7 @@ function ncccpricetype()
 function rdsSkuList()
 {
     include './inc/rds_db.php';
-    $sql = 'SELECT * FROM vwMasterlistREG';
+    $sql = 'SELECT * FROM vwMasterlistREG ORDER BY BrandName ASC';
     $result = sqlsrv_query($rds_conn, $sql);
 
     $i=1;    
@@ -164,6 +179,73 @@ function rdsSkuList()
             </tr>
         ';
     }
+}
+
+//get sm skulist
+function smlist()
+{
+    include './inc/sm_db.php';
+    $sql = 'SELECT * FROM vwSMitems ORDER BY BrandName ASC';
+    $result = sqlsrv_query($sm_conn, $sql);
+
+    $i=1;    
+    while($row = sqlsrv_fetch_array($result)){
+
+        $vend_code = $row['vend_code'];
+        $reg = $row['REG'];
+        $md = $row['MD'];
+        $cost = $row['Cost'];
+        $brandname = $row['BrandName'];
+        $ap_type = $row['AP_Type'];
+        $dept = $row['dept'];
+        $subdept = $row['subdept'];
+        $class = $row['class'];
+        $subclass = $row['subclass'];
+        $styleno  = $row['styleno'];
+        $skutype = $row['SKUtype'];
+        $insku = $row['inSKU'];
+        $stylesize = $row['StyleSize'];
+        $sm_upc = $row['sm_upc'];
+        $vendor_upc = $row['vendor_upc'];
+        $stkcode = $row['stk_code'];
+        $stylecolor = $row['StyleColor'];
+        $entrydate = $row['EntryDate']->format('Y/m/d');
+        $category = $row['Category'];
+        $styledesc = $row['StyleDesc'];
+        $brandcode = $row['brand_code'];
+        $stkdesc = $row['stk_desc'];
+
+        echo '
+            <tr>
+            <td>Main</td>
+            <td>'.$i++.'</td>
+            <td>'.$vend_code.'</td>
+            <td>'.$reg.'</td>
+            <td>'.$md.'</td>
+            <td>'.$cost.'</td>
+            <td>'.$brandname.'</td>
+            <td>'.$ap_type.'</td>
+            <td>'.$dept.'</td>
+            <td>'.$subdept.'</td>
+            <td>'.$class.'</td>
+            <td>'.$subclass.'</td>
+            <td>'.$styleno.'</td>
+            <td>'.$skutype.'</td>
+            <td>'.$insku.'</td>
+            <td>'.$stylesize.'</td>
+            <td>'.$sm_upc.'</td>
+            <td>'.$vendor_upc.'</td>
+            <td>'.$stkcode.'</td>
+            <td>'.$stylecolor.'</td>
+            <td>'.$entrydate.'</td>
+            <td>'.$category.'</td>   
+            <td>'.$styledesc.'</td>
+            <td>'.$brandcode.'</td>
+            <td>'.$stkdesc.'</td>
+            </tr>
+        ';
+    }
+
 }
 
 //get by brand in tblSKU
@@ -286,25 +368,25 @@ function ncccsearch($brand, $styleno, $pricetype)
     elseif(isset($pricetype)) 
     {
         $i=1;
-        while($rowstyleno = sqlsrv_fetch_array($result))
+        while($rowpricetype = sqlsrv_fetch_array($result))
        {
-        $brand = $rowstyleno['Brand'];
-        $desc = $rowstyleno['Descrip'];
-        $sizeset = $rowstyleno['SizeSet'];
-        $styleno = $rowstyleno['StyleNo'];
-        $buyercode = $rowstyleno['BuyerCode'];
-        $skutype = $rowstyleno['SKUType'];
-        $vendorcode = $rowstyleno['VendorCode'];
-        $srp = $rowstyleno['SRP'];
-        $upc = $rowstyleno['UPC'];
-        $uom = $rowstyleno['UoM'];
-        $sku = $rowstyleno['SKU'];
-        $dept = $rowstyleno['Dept'];
-        $subdept = $rowstyleno['SubDept'];
-        $class = $rowstyleno['Class'];
-        $subclass = $rowstyleno['SubClass'];
-        $entrydate = $rowstyleno['EntryDate']->format('Y/m/d');
-        $pricetype = $rowstyleno['PriceType'];
+        $brand = $rowpricetype['Brand'];
+        $desc = $rowpricetype['Descrip'];
+        $sizeset = $rowpricetype['SizeSet'];
+        $styleno = $rowpricetype['StyleNo'];
+        $buyercode = $rowpricetype['BuyerCode'];
+        $skutype = $rowpricetype['SKUType'];
+        $vendorcode = $rowpricetype['VendorCode'];
+        $srp = $rowpricetype['SRP'];
+        $upc = $rowpricetype['UPC'];
+        $uom = $rowpricetype['UoM'];
+        $sku = $rowpricetype['SKU'];
+        $dept = $rowpricetype['Dept'];
+        $subdept = $rowpricetype['SubDept'];
+        $class = $rowpricetype['Class'];
+        $subclass = $rowpricetype['SubClass'];
+        $entrydate = $rowpricetype['EntryDate']->format('Y/m/d');
+        $pricetype = $rowpricetype['PriceType'];
 
         echo '
         <tr>
@@ -330,7 +412,6 @@ function ncccsearch($brand, $styleno, $pricetype)
         ';
        }
     }
-
 }
 
 //get by brand in vwMasterlistREG
@@ -609,6 +690,165 @@ function rdsSaveSearch($brandname, $styleno, $rds_pricetype)
             ';
            }
         }
+    }
+}
+
+//sm customize search
+function smSaveSearch($brandname, $styleno, $pricetype)
+{
+    if($pricetype == 'REG')
+    {
+        include './inc/sm_db.php';
+        $sql = "SELECT * FROM vwSMitems WHERE BrandName LIKE '%$brandname%' AND styleno LIKE '%$styleno%' ";
+        $result = sqlsrv_query($sm_conn, $sql);
+
+        if(isset($brandname))
+        {
+           $i=1;
+           while($row = sqlsrv_fetch_array($result))
+           {
+            $vend_code = $row['vend_code'];
+            $reg = $row['REG'];
+            $cost = $row['Cost'];
+            $brandname = $row['BrandName'];
+            $ap_type = $row['AP_Type'];
+            $dept = $row['dept'];
+            $subdept = $row['subdept'];
+            $class = $row['class'];
+            $subclass = $row['subclass'];
+            $styleno  = $row['styleno'];
+            $skutype = $row['SKUtype'];
+            $insku = $row['inSKU'];
+            $stylesize = $row['StyleSize'];
+            $sm_upc = $row['sm_upc'];
+            $vendor_upc = $row['vendor_upc'];
+            $stkcode = $row['stk_code'];
+            $stylecolor = $row['StyleColor'];
+            $entrydate = $row['EntryDate']->format('Y/m/d');
+            $category = $row['Category'];
+            $styledesc = $row['StyleDesc'];
+            $brandcode = $row['brand_code'];
+            $stkdesc = $row['stk_desc'];
+            
+            echo '
+            <tr>
+                <td>'.$i++.'</td>
+                <td>'.$brandname.'</td>
+                <td>'.$vend_code.'</td>
+                <td>'.$dept.'</td>
+                <td>'.$subdept.'</td>
+                <td>'.$class.'</td>
+                <td>'.$subclass.'</td>
+                <td>'.$stkcode.'</td>
+                <td>'.$sm_upc.'</td>
+                <td>'.$styleno.'</td>
+                <td>'.$styledesc.'</td>
+                <td>'.$stylecolor.'</td>
+                <td>'.$stylesize.'</td>
+                <td>'.$reg.'</td>
+                <td>'.$entrydate.'</td>
+            </tr>
+            ';
+           }
+        }
+        elseif(isset($styleno))
+        {
+            $i=1;
+            while($row = sqlsrv_fetch_array($result))
+            {
+             $vend_code = $row['vend_code'];
+             $reg = $row['REG'];
+             $brandname = $row['BrandName'];
+             $ap_type = $row['AP_Type'];
+             $dept = $row['dept'];
+             $subdept = $row['subdept'];
+             $class = $row['class'];
+             $subclass = $row['subclass'];
+             $styleno  = $row['styleno'];
+             $vendor_upc = $row['vendor_upc'];
+             $stkcode = $row['stk_code'];
+             $styledesc = $row['StyleDesc'];
+             $brandcode = $row['brand_code'];
+
+             echo '
+             <tr>
+                 <td>'.$i++.'</td>
+                 <td>'.$vend_code.'</td>
+                 <td>'.$dept.'</td>
+                 <td>'.$subdept.'</td>
+                 <td>'.$class.'</td>
+                 <td>'.$subclass.'</td>
+                 <td>'.$brandcode.'</td>
+                 <td>'.$styledesc.'</td>
+                 <td>'.$styleno.'</td>
+                 <td>'.$reg.'</td>
+                 <td>'.$vendor_upc.'</td>
+                 <td>'.$stkcode.'</td>
+                 <td>'.$brandname.'</td>
+                 <td>'.$ap_type.'</td>
+             </tr>
+             ';
+            }
+        }
+    }
+    elseif($pricetype == 'MD')
+    {
+           include './inc/sm_db.php';
+           $sql = "SELECT * FROM vwSMitems WHERE BrandName LIKE '%$brandname%' AND styleno LIKE '%$styleno%' ";
+           $result = sqlsrv_query($sm_conn, $sql);
+
+           $i=1;
+           while($row = sqlsrv_fetch_array($result))
+           {
+            $vend_code = $row['vend_code'];
+            $brandname = $row['BrandName'];
+            $dept = $row['dept'];
+            $subdept = $row['subdept'];
+            $class = $row['class'];
+            $subclass = $row['subclass'];
+            $styleno  = $row['styleno'];
+            $reg = $row['REG'];
+            $vendor_upc = $row['vendor_upc'];
+            $stkcode = $row['stk_code'];
+            $brandcode = $row['brand_code'];
+            $stkdesc = $row['stk_desc'];
+            $sm_upc = $row['sm_upc'];
+            $ap_type = $row['AP_Type'];
+            
+            echo '
+            <tr>
+                <td>'.$i++.'</td>
+                <td>'.$vend_code.'</td>
+                <td>'.$dept.'</td>
+                <td>'.$subdept.'</td>
+                <td>'.$class.'</td>
+                <td>'.$subclass.'</td>
+                <td>'.$brandcode.'</td>
+                <td>'.$stkdesc.'</td>
+                <td>'.$styleno.'</td>
+                <td>'.$reg.'</td>
+                <td>'.$vendor_upc.'</td>
+                <td>'.$sm_upc.'</td>
+                <td>'.$stkcode.'</td>
+                <td>'.$brandname.'</td>
+                <td>'.$ap_type.'</td>
+            </tr>
+            ';
+           }
+    }
+}
+
+//sm get brandname
+function smBrandName()
+{
+    include './inc/sm_db.php';
+    $sql = 'SELECT DISTINCT BrandName FROM vwSMitems ORDER BY  BrandName ASC';
+    $result = sqlsrv_query($sm_conn, $sql);
+
+    while($row = sqlsrv_fetch_array($result))
+    {
+        $brandname = $row['BrandName'];
+        echo '<option>'.$brandname.'</option>';
     }
 }
 

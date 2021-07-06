@@ -147,7 +147,7 @@
                         <th>PriceType</th>
                   </tr>
               </tfoot>
-              <tbody id="nccc_list" style="display: none;"></tbody>
+              <tbody id="nccc_list"></tbody>
               <tbody id="nccc_search" style="display: none;"></tbody>
             </table>
 
