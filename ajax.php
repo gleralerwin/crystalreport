@@ -350,47 +350,47 @@ function ncccsearch($brand, $styleno, $pricetype)
     {
         $i=1;
         while($rowpricetype = sqlsrv_fetch_array($result))
-       {
-        $brand = $rowpricetype['Brand'];
-        $desc = $rowpricetype['Descrip'];
-        $sizeset = $rowpricetype['SizeSet'];
-        $styleno = $rowpricetype['StyleNo'];
-        $buyercode = $rowpricetype['BuyerCode'];
-        $skutype = $rowpricetype['SKUType'];
-        $vendorcode = $rowpricetype['VendorCode'];
-        $srp = $rowpricetype['SRP'];
-        $upc = $rowpricetype['UPC'];
-        $uom = $rowpricetype['UoM'];
-        $sku = $rowpricetype['SKU'];
-        $dept = $rowpricetype['Dept'];
-        $subdept = $rowpricetype['SubDept'];
-        $class = $rowpricetype['Class'];
-        $subclass = $rowpricetype['SubClass'];
-        $entrydate = $rowpricetype['EntryDate']->format('Y/m/d');
-        $pricetype = $rowpricetype['PriceType'];
+        {
+            $brand = $rowpricetype['Brand'];
+            $desc = $rowpricetype['Descrip'];
+            $sizeset = $rowpricetype['SizeSet'];
+            $styleno = $rowpricetype['StyleNo'];
+            $buyercode = $rowpricetype['BuyerCode'];
+            $skutype = $rowpricetype['SKUType'];
+            $vendorcode = $rowpricetype['VendorCode'];
+            $srp = $rowpricetype['SRP'];
+            $upc = $rowpricetype['UPC'];
+            $uom = $rowpricetype['UoM'];
+            $sku = $rowpricetype['SKU'];
+            $dept = $rowpricetype['Dept'];
+            $subdept = $rowpricetype['SubDept'];
+            $class = $rowpricetype['Class'];
+            $subclass = $rowpricetype['SubClass'];
+            $entrydate = $rowpricetype['EntryDate']->format('Y/m/d');
+            $pricetype = $rowpricetype['PriceType'];
 
-        echo '
-        <tr>
-        <td>'.$i++.'</td>
-        <td>'.$brand.'</td>
-        <td>'.$desc.'</td>
-        <td>'.$sizeset.'</td>
-        <td>'.$styleno.'</td>
-        <td>'.$buyercode.'</td>
-        <td>'. $skutype.'</td>
-        <td>'.$vendorcode.'</td>
-        <td>'. $srp.'</td>
-        <td>'. $upc.'</td>
-        <td>'. $uom.'</td>
-        <td>'. $sku.'</td>
-        <td>'.$dept.'</td>
-        <td>'.$subdept.'</td>
-        <td>'.$class.'</td>
-        <td>'.$subclass.'</td>
-        <td>'.$entrydate.'</td>
-        <td>'.$pricetype.'</td>
-        </tr>
-        ';
+            echo '
+            <tr>
+            <td>'.$i++.'</td>
+            <td>'.$brand.'</td>
+            <td>'.$desc.'</td>
+            <td>'.$sizeset.'</td>
+            <td>'.$styleno.'</td>
+            <td>'.$buyercode.'</td>
+            <td>'.$skutype.'</td>
+            <td>'.$vendorcode.'</td>
+            <td>'.$srp.'</td>
+            <td>'.$upc.'</td>
+            <td>'.$uom.'</td>
+            <td>'.$sku.'</td>
+            <td>'.$dept.'</td>
+            <td>'.$subdept.'</td>
+            <td>'.$class.'</td>
+            <td>'.$subclass.'</td>
+            <td>'.$entrydate.'</td>
+            <td>'.$pricetype.'</td>
+            </tr>
+            ';
        }
     }
 }

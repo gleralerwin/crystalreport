@@ -48,7 +48,7 @@
          <div id="ncccsearch" class="row" style="background-color: #F5FFFA; margin: 2px 2px 10px 2px; padding: 18px; border: 1px solid #A9A9A9;">
               <div class="col-sm-2">
                 <div class="form-group">
-                  <label>Select Brand</label>
+                  <label>Select Brand <em style="color: #696969;">( Required Field )</em></label>
                   <select class="form-control" id="brandname" name="brandname">
                     <option value="0"> --- Brand Name --- </option>
                     <option value="BOSSINI LADIES">BOSSINI LADIES</option>
@@ -73,7 +73,7 @@
               </div>
               <div class="col-sm-2">
                 <div class="form-group">
-                <label>Select Price</label>
+                <label>Select Price <em style="color: #696969;">( Required Field )</em></label>
                   <select class="form-control" id="pricetype" name="pricetype">
                   <option value="0"> --- Price Type --- </option>
                   <option value="REG">REGULAR PRICE</option>
