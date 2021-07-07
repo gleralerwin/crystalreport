@@ -156,15 +156,11 @@
 
              <!-- table SM REG list (Regular price only ) -->
             <table class="table table-bordered table-striped" style="width: 100%; display: none;" id="sm_reglist">
-              <!-- <button class="btn btn-bg btn-success float-right" onclick="sm_MdExport()">Export To Excel ( MD ) <i class="fa fa-download"></i></button>
-              <button class="btn btn-bg btn-info float-right" onclick="sm_RegExport()" style="margin-right: 5px;">Export To Excel ( REG ) <i class="fa fa-download"></i></button> -->
-
-              <br><br>
-
+            <br>
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>BrandName</th>
+                        <th id="sm_regbrand_col">BrandName</th>
                         <th>Vendo_Code</th>
                         <th>Dept</th>
                         <th>Subdept</th>
@@ -172,11 +168,11 @@
                         <th>Subclass</th>
                         <th>Stk_code</th>
                         <th>Sm_upc</th>
-                        <th>Styleno</th>
+                        <th id="sm_regstyleno_col">Styleno</th>
                         <th>Styledesc</th>
                         <th>Stylecolor</th>
                         <th>Stylesize</th>
-                        <th>REG</th>
+                        <th id="sm_reg_col">REG</th>
                         <th>SKUdate</th>
                     </tr>
                 </thead>
@@ -184,7 +180,7 @@
                 <tfoot>
                   <tr>
                         <th>#</th>
-                        <th>BrandName</th>
+                        <th id="sm_regbrand_col">BrandName</th>
                         <th>Vendo_Code</th>
                         <th>Dept</th>
                         <th>Subdept</th>
@@ -192,11 +188,11 @@
                         <th>Subclass</th>
                         <th>Stk_code</th>
                         <th>Sm_upc</th>
-                        <th>Styleno</th>
+                        <th id="sm_regstyleno_col">Styleno</th>
                         <th>Styledesc</th>
                         <th>Stylecolor</th>
                         <th>Stylesize</th>
-                        <th>REG</th>
+                        <th id="sm_reg_col">REG</th>
                         <th>SKUdate</th>
                   </tr>
               </tfoot>
@@ -204,11 +200,6 @@
 
              <!-- table SM MD list (Markdown only ) -->
             <table class="table table-bordered table-striped" style="width: 100%; display: none;" id="sm_mdlist">
-              <!-- <button class="btn btn-bg btn-success float-right" onclick="sm_MdExport()">Export To Excel ( MD ) <i class="fa fa-download"></i></button>
-              <button class="btn btn-bg btn-info float-right" onclick="sm_RegExport()" style="margin-right: 5px;">Export To Excel ( REG ) <i class="fa fa-download"></i></button> -->
-
-              <br><br>
-
                 <thead>
                     <tr>
                         <th>#</th>

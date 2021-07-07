@@ -97,16 +97,16 @@
                   <thead>
                   <tr>
                     <th>#</th>
-                    <th>BrandName</th>
+                    <th id="rds_brand_col">BrandName</th>
                     <th>ShortDesc</th>
                     <th>ItemDesc</th>
                     <th>SKU</th>
                     <th>UPC</th>
                     <th>MFno</th>
-                    <th>StyleNo</th>
+                    <th id="rds_styleno_col">StyleNo</th>
                     <th>BuyerCode</th>
                     <th>OrigPrice</th>
-                    <th>PriceType</th>
+                    <th id="rds_pricetype_col">PriceType</th>
                     <th>CreateDate</th>
                     <th>IRMSName</th>
                     <th>VendorCode</th>
@@ -117,16 +117,16 @@
                   <tfoot>
                   <tr>
                   <th>#</th>
-                    <th>BrandName</th>
+                    <th id="rds_brand_col">BrandName</th>
                     <th>ShortDesc</th>
                     <th>ItemDesc</th>
                     <th>SKU</th>
                     <th>UPC</th>
                     <th>MFno</th>
-                    <th>StyleNo</th>
+                    <th id="rds_styleno_col">StyleNo</th>
                     <th>BuyerCode</th>
                     <th>OrigPrice</th>
-                    <th>PriceType</th>
+                    <th id="rds_pricetype_col">PriceType</th>
                     <th>CreateDate</th>
                     <th>IRMSName</th>
                     <th>VendorCode</th>

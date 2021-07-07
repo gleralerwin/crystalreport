@@ -106,10 +106,10 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Brand</th>
+                        <th id="nccc_brand">Brand</th>
                         <th>Desc</th>
                         <th>SizeSet</th>
-                        <th>StyleNo</th>
+                        <th id="nccc_styleno">StyleNo</th>
                         <th>BuyerCode</th>
                         <th>SKUType</th>
                         <th>VendorCode</th>
@@ -122,16 +122,16 @@
                         <th>Class</th>
                         <th>SubClass</th>
                         <th>EntryDate</th>
-                        <th>PriceType</th>
+                        <th id="nccc_pricetype">PriceType</th>
                     </tr>
                 </thead>
                 <tfoot>
                   <tr>
                         <th>#</th>
-                        <th>Brand</th>
+                        <th id="nccc_brand">Brand</th>
                         <th>Desc</th>
                         <th>SizeSet</th>
-                        <th>StyleNo</th>
+                        <th id="nccc_styleno">StyleNo</th>
                         <th>BuyerCode</th>
                         <th>SKUType</th>
                         <th>VendorCode</th>
@@ -144,7 +144,7 @@
                         <th>Class</th>
                         <th>SubClass</th>
                         <th>EntryDate</th>
-                        <th>PriceType</th>
+                        <th id="nccc_pricetype">PriceType</th>
                   </tr>
               </tfoot>
               <tbody id="nccc_list"></tbody>

@@ -265,11 +265,14 @@ function ncccSearch()
         success:function(data)
         {
             // console.log(data);
+            $('#nccc_brand').css('background-color', '#FFFF00');
+            $('#nccc_styleno').css('background-color', '#FFFF00');
+            $('#nccc_pricetype').css('background-color', '#FFFF00');
+                
             $('#nccc_list').hide();
             $('#nccc_search').show();
             $('#nccc_search').empty();
             $('#nccc_search').append(data);
-            
         }
     });
 }
@@ -292,7 +295,7 @@ function rdssearch()
 }
 rdssearch();
 
-//nccc search
+//rds search
 function rdsSearch()
 {
     let brandname = $('#brandname').val();
@@ -320,6 +323,10 @@ function rdsSearch()
         success:function(data)
         {
             // console.log(data);
+            $('#rds_brand_col').css('background-color', '#FFFF00');
+            $('#rds_styleno_col').css('background-color', '#FFFF00');
+            $('#rds_pricetype_col').css('background-color', '#FFFF00');
+
             $('#rdslist').hide();
             $('#rds_searchlist').show();
             $('#rds_searchlist').empty();
@@ -359,20 +366,36 @@ function smSearch()
 
             if(pricetype == 'REG')
             {
+                $('#sm_regbrand_col').css('background-color', '#FFFF00');
+                $('#sm_regstyleno_col').css('background-color', '#FFFF00');
+                $('#sm_reg_col').css('background-color', '#FFFF00');
+
+                //default sm skulist view all
                 $('#sm_default_list').hide();
                 $('#sm_defaultlist').hide();
 
+                //SM SKU list (MD)    
+                $('#display_sm_mdlist').hide();
+                $('#sm_mdlist').hide();
+
+                //SM SKU list (REG)    
                 $('#display_sm_reglist').show();
                 $('#sm_reglist').show();
-
+    
                 $('#display_sm_reglist').empty();
                 $('#display_sm_reglist').append(data);
             }
-            if(pricetype == 'MD')
+            else if(pricetype == 'MD')
             {
+                //default sm skulist view all
                 $('#sm_default_list').hide();
                 $('#sm_defaultlist').hide();
 
+                 //SM SKU list (REG)    
+                $('#display_sm_reglist').hide();
+                $('#sm_reglist').hide();
+
+                //SM SKU list (MD)    
                 $('#display_sm_mdlist').show();
                 $('#sm_mdlist').show();
 

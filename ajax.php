@@ -217,7 +217,6 @@ function smlist()
 
         echo '
             <tr>
-            <td>Main</td>
             <td>'.$i++.'</td>
             <td>'.$vend_code.'</td>
             <td>'.$reg.'</td>
