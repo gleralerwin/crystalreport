@@ -45,11 +45,24 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-         <div id="ncccsearch" class="row" style="background-color: #FFFFFF; margin: 2px 2px 10px 2px; padding: 18px; border: 1px solid #A9A9A9;">
+         <div id="ncccsearch" class="row" style="background-color: #F5FFFA; margin: 2px 2px 10px 2px; padding: 18px; border: 1px solid #A9A9A9;">
               <div class="col-sm-2">
                 <div class="form-group">
                   <label>Select Brand</label>
-                  <select class="form-control" id="brandname" name="brandname"></select>    
+                  <select class="form-control" id="brandname" name="brandname">
+                    <option value="0"> --- Brand Name --- </option>
+                    <option value="BOSSINI LADIES">BOSSINI LADIES</option>
+                    <option value="CRISSA">CRISSA</option>
+                    <option value="DYSE ONE">DYSE ONE</option>
+
+                    <option value="EGO">EGO</option>
+                    <option value="FUBU">FUBU </option>
+                    <option value="FUBU GIRLS">FUBU GIRLS</option>
+                    <option value="HOTKISS">HOTKISS</option>
+                    <option value="NO APOLOGIES">NO APOLOGIES</option>
+                    <option value="RED GIRL">RED GIRL</option>
+                    <option value="UNIONBAY">UNIONBAY</option>
+                  </select>    
                 </div>
               </div>
               <div class="col-sm-2">
@@ -60,16 +73,17 @@
               </div>
               <div class="col-sm-2">
                 <div class="form-group">
-                <label>PriceType</label>
+                <label>Select Price</label>
                   <select class="form-control" id="pricetype" name="pricetype">
-                  <option value="REG">REG</option>
-                  <option value="MD">MD</option>
+                  <option value="0"> --- Price Type --- </option>
+                  <option value="REG">REGULAR PRICE</option>
+                  <option value="MD">MARKDOWN PRICE</option>
                   </select>    
                 </div>
               </div>
               <div class="col-sm-2" style="margin-top: 32px;">
                   <div class="form-group">
-                    <button class="btn btn-md btn-primary form-control" onclick="smSearch()">Search</button>
+                    <button class="btn btn-md btn-primary form-control" onclick="smSearch()">Custom Search</button>
                   </div>
               </div>
           </div>
@@ -210,12 +224,12 @@
                         <th>Subclass</th>
                         <th>Brandcode</th>
                         <th>Stk_desc</th>
-                        <th>Styleno</th>
+                        <th id="sm_mdstyleno_col">Styleno</th>
                         <th>Unit_retl</th>
                         <th>Vendor_upc</th>
                         <th>Sm_upc</th>
                         <th>Stk_Code</th>
-                        <th>IRMS Brand</th>
+                        <th id="sm_mdirmsname_col">IRMS Brand</th>
                         <th>AP_Type</th>
                     </tr>
                 </thead>

@@ -43,7 +43,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
+        <a href="#" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
@@ -260,7 +260,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-table"></i>
               <p>
-                Tables
+                Reports
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -284,12 +284,6 @@
                   <p>SM Report</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="test.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>testing</p>
-                </a>
-              </li>
             </ul>
           </li>
 
@@ -304,7 +298,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/examples/invoice.html" class="nav-link">
+                <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>NCCC REPORT</p>
                 </a>
@@ -312,7 +306,7 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/examples/invoice.html" class="nav-link">
+                <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>RDS REPORT</p>
                 </a>
@@ -320,7 +314,7 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/examples/invoice.html" class="nav-link">
+                <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>SM REPORT</p>
                 </a>

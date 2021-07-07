@@ -65,8 +65,8 @@ elseif($function == 'smBrandName')
 // }
 
 
-
 //////////////////////////////////////////////////////////////
+
 
 //fetch nccc sku list
 function getskulist_nccc()
@@ -115,24 +115,6 @@ function ncccpricetype()
         echo '<option>'.$pricetype.'</option>';
     }
 }
-
-//rds pricetype
-// function rdsPriceType()
-// {
-//     include './inc/rds_db.php';
-//     $sql = 'SELECT pricetype FROM vwMasterlistREG JOIN vwMasterlistMD ON vwMasterlistREG.SubDeptClass = vwMasterlistMD.SubDeptClass';
-
-//     // $sql = 'SELECT distinct(PriceType) from vwMasterlistREG';
-
-//     $result = sqlsrv_query($rds_conn, $sql);
-   
-//     while($row = sqlsrv_fetch_array($result))
-//     {
-//         $rdspricetype = $row['pricetype'];
-//         echo '<option>'.$rdspricetype.'</option>';
-//     }
-
-// }
 
 //fetch rds sku list
 function rdsSkuList()

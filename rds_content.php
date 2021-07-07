@@ -46,11 +46,25 @@
     <section class="content">
       <div class="container-fluid">
 
-         <div id="rds_search" class="row" style="background-color: #FFFFFF; margin: 2px 2px 10px 2px; padding: 18px; border: 1px solid #A9A9A9;">
+         <div id="rds_search" class="row" style="background-color: #F5FFFA; margin: 2px 2px 10px 2px; padding: 18px; border: 1px solid #A9A9A9;">
             <div class="col-sm-2">
               <div class="form-group">
                 <label>Select Brand</label>
-                <select class="form-control" id="brandname" name="brandname"></select>    
+                <select class="form-control" id="brandname" name="brandname">
+                  <option value="0"> --- Brand Name --- </option>
+                  <option value="BOSSINI">BOSSINI</option>
+                  <option value="BSSNILD">BSSNILD</option>
+                  <option value="CRISA">CRISA</option>
+                  <option value="CRISASTP">CRISASTP</option>
+                  <option value="DYSE1">DYSE1</option>
+                  <option value="EGO">EGO</option>
+                  <option value="FUBU ">FUBU </option>
+                  <option value="FUBUAC">FUBUAC</option>
+                  <option value="FUBULD">FUBULD</option>
+                  <option value="HOTKS">HOTKS</option>
+                  <option value="NOAPL">NOAPL</option>
+                  <option value="RGIRL">RGIRL</option>
+                </select>    
               </div>
             </div>
             <div class="col-sm-2">
@@ -61,16 +75,17 @@
             </div>
             <div class="col-sm-2">
               <div class="form-group">
-              <label>PriceType</label>
+              <label>Select Price</label>
                 <select class="form-control" id="rds_pricetype" name="rds_pricetype">
-                <option value="REG">REG</option>
-                <option value="MD">MD</option>
+                <option value="0"> --- Price Type --- </option>
+                <option value="REG">REGULAR PRICE</option>
+                <option value="MD">MARKDOWN PRICE</option>
                 </select>    
               </div>
             </div>
             <div class="col-sm-2" style="margin-top: 32px;">
                 <div class="form-group">
-                    <button class="btn btn-bg btn-primary form-control" onclick="rdsSearch()">Search</button>
+                    <button class="btn btn-bg btn-primary form-control" onclick="rdsSearch()">Custom Search</button>
                 </div>
             </div>
          </div>      

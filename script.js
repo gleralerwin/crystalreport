@@ -34,31 +34,13 @@ function ncccgetPriceType()
         data: {function: 'ncccpricetype'},
         success: function(data)
         {
-            console.log(data);
-            $('#pricetype').empty();
-            $('#pricetype').append(data);
+            // console.log(data);
+            // $('#pricetype').empty();
+            // $('#pricetype').append(data);
         }
     });
 }
 ncccgetPriceType();
-
-//get RDS pricetype
-// function rdsGetPriceType()
-// {
-//     $.ajax({
-//         url: 'ajax.php',
-//         type: 'post',
-//         dataType: 'text',
-//         data: {function: 'rdsPriceType'},
-//         success: function(data)
-//         {
-//             console.log(data);
-//             $('#rds_pricetype').empty();
-//             $('#rds_pricetype').append(data);
-//         }
-//     });
-// }
-// rdsGetPriceType();
 
 //rds sku list
 function fetch_rdslist()
@@ -206,16 +188,15 @@ function ncccGetBrandName()
         data:{function: 'ncccBrandName'},
         success: function(data)
         {
-            console.log(data);
-            // $('#ncccsearch').toggle('fast');
-            $('#brand').empty();
-            $('#brand').append(data);
+            // console.log(data);
+            // $('#brand').empty();
+            // $('#brand').append(data);
         }
     });
 }
 ncccGetBrandName();
 
-//nccc get description
+//NCCCC get description
 function ncccGetDesc()
 {
     let ncccdesc = $('#brand').val();
@@ -230,20 +211,19 @@ function ncccGetDesc()
         },
         success: function(data)
         {
-            console.log(data);
+            // console.log(data);
             document.getElementById('display').innerHTML = data;
         }
-
     });
 }
 
-//nccc search
+//NCCC search
 function ncccSearch()
 {
     let brand = $('#brand').val();
     let styleno = $('#styleno').val();
     let pricetype = $('#pricetype').val();
-   
+
     $.ajax({
         url: 'ajax.php',
         type: 'post',
@@ -288,8 +268,8 @@ function rdssearch()
         success: function(data)
         {
             // console.log(data);
-            $('#brandname').empty();
-            $('#brandname').append(data);
+            // $('#brandname').empty();
+            // $('#brandname').append(data);
         }
     });
 }
@@ -387,6 +367,9 @@ function smSearch()
             }
             else if(pricetype == 'MD')
             {
+                $('#sm_mdstyleno_col').css('background-color', '#FFFF00');
+                $('#sm_mdirmsname_col').css('background-color', '#FFFF00');
+
                 //default sm skulist view all
                 $('#sm_default_list').hide();
                 $('#sm_defaultlist').hide();
@@ -406,7 +389,7 @@ function smSearch()
     });
 }
 
-//get sm branchname
+//get SM branch name
 function sm_getBrandName()
 {
     $.ajax({    
@@ -416,9 +399,9 @@ function sm_getBrandName()
         data:{function: 'smBrandName'},
         success: function(data)
         {
-            console.log(data);
-            $('#sm_brandname').empty();
-            $('#sm_brandname').append(data);
+            // console.log(data);
+            // $('#brandname').empty();
+            // $('#brandname').append(data);
         }
 
     });

@@ -45,11 +45,27 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-         <div id="ncccsearch" class="row" style="background-color: #FFFFFF; margin: 2px 2px 10px 2px; padding: 18px; border: 1px solid #A9A9A9;">
+         <div id="ncccsearch" class="row" style="background-color: #F5FFFA; margin: 2px 2px 10px 2px; padding: 18px; border: 1px solid #A9A9A9;">
               <div class="col-sm-2">
                 <div class="form-group">
                   <label>Select Brand</label>
-                  <select class="form-control" id="brand" name="brand"></select>    
+                  <select class="form-control" id="brand" name="brand">
+                    <option value="0"> --- Brand Name --- </option>
+                    <option value="bossini">BOSSINI</option>
+                    <option value="cliffe">CLIFFE</option>
+                    <option value="crissa">CRISSA</option>
+                    <option value="crissa steps">CRISSA STEPS</option>
+                    <option value="dyse one">DYSE ONE</option>
+                    <option value="ego">EGO</option>
+                    <option value="freebie">FREEBIE</option>
+                    <option value="fubu">FUBU</option>
+                    <option value="fube girls">FUBU GIRLS</option>
+                    <option value="hotkiss">HOTKISS</option>
+                    <option value="hotkiss femme">HOTKISS FEMME</option>
+                    <option value="no aplologies">NO APOLOGIES</option>
+                    <option value="red girl">RED GIRL</option>
+                    <option value="unionbay">UNIONBAY</option>
+                  </select> 
                 </div>
               </div>
               <div class="col-sm-2">
@@ -60,13 +76,17 @@
               </div>
               <div class="col-sm-2">
                 <div class="form-group">
-                <label>PriceType</label>
-                  <select class="form-control" id="pricetype" name="pricetype"></select>    
+                <label>Select Price</label>
+                  <select class="form-control" id="pricetype" name="pricetype">
+                    <option value="0"> --- Price Type --- </option>
+                    <option value="reg">REGULAR PRICE</option>
+                    <option value="md">MARK DOWN PRICE</option>
+                  </select>    
                 </div>
               </div>
               <div class="col-sm-2" style="margin-top: 32px;">
                   <div class="form-group">
-                    <button class="btn btn-md btn-primary form-control" onclick="ncccSearch()">Search</button>
+                    <button class="btn btn-md btn-primary form-control" onclick="ncccSearch()">Custom Search</button>
                   </div>
               </div>
           </div>
