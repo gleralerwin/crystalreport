@@ -248,7 +248,7 @@ function ncccSearch()
             $('#nccc_brand').css('background-color', '#FFFF00');
             $('#nccc_styleno').css('background-color', '#FFFF00');
             $('#nccc_pricetype').css('background-color', '#FFFF00');
-                
+                    
             $('#nccc_list').hide();
             $('#nccc_search').show();
             $('#nccc_search').empty();

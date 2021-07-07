@@ -252,7 +252,7 @@ function ncccsearch($brand, $styleno, $pricetype)
     $result = sqlsrv_query($nccc_conn, $sql);
 
     // checked brand    
-    if($brand)
+    if(isset($brand))
     {
        $i=1;
        while($rowbrand = sqlsrv_fetch_array($result))
