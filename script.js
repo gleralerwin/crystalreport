@@ -95,17 +95,47 @@ function sm_list()
 sm_list();
 
 //export nccc REG skulist
+// function Nccc_RegExport()
+// {
+//     var retVal = confirm("Want To Download in Excel (REG) ?");
+//     if( retVal == true ) {
+//        window.location.href = './reports/nccc_reg_skulist_excel.php';
+//        return true;
+//     }
+//     else {
+//        window.location.href = 'nccc.php';
+//        return false;
+//     }    
+// }
+
 function Nccc_RegExport()
 {
-    var retVal = confirm("Want To Download in Excel (REG) ?");
-    if( retVal == true ) {
-       window.location.href = './reports/nccc_reg_skulist_excel.php';
-       return true;
-    }
-    else {
-       window.location.href = 'nccc.php';
-       return false;
-    }    
+    let brand = $('#brand').val();
+    let styleno = $('#styleno').val();
+    let pricetype = $('#pricetype').val();
+
+    $.ajax({
+        url: 'ajax.php',
+        type: 'post',
+        dataType: 'text',
+        data:{
+            brand:brand,
+            styleno:styleno,
+            pricetype:pricetype,
+            function: 'nccc_regexport'
+        },
+        success: function(data)
+        {
+            console.log(data);
+            alert('Do you want to download');
+
+            // var retVal = confirm("Want To Download in Excel (REG) ?");
+            // if( retVal == true ) {
+            //     window.location.href = '../skugen/reports/nccc_reg_skulist_excel.php';
+            //     return true;
+            // }
+        }
+    });
 }
 
 //export nccc MD skulist

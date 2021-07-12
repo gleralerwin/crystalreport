@@ -89,7 +89,7 @@
                     <button class="btn btn-md btn-primary form-control" onclick="ncccSearch()">Custom Search</button>
                   </div>
               </div>
-          </div>
+        </div>
 
         <div class="row">
           <div class="col-12">
