@@ -122,18 +122,12 @@ function Nccc_RegExport()
             brand:brand,
             styleno:styleno,
             pricetype:pricetype,
-            function: 'nccc_regexport'
+            function: 'nccc_regexport',
         },
         success: function(data)
         {
             console.log(data);
-            alert('Do you want to download');
-
-            // var retVal = confirm("Want To Download in Excel (REG) ?");
-            // if( retVal == true ) {
-            //     window.location.href = '../skugen/reports/nccc_reg_skulist_excel.php';
-            //     return true;
-            // }
+            window.location.href = './reports/nccc_reg_skulist_excel.php' + data;
         }
     });
 }
