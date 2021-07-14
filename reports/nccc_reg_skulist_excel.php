@@ -8,8 +8,6 @@ include '../PHPExcel/Classes/PHPExcel.php';
 // $styleno = 'NLT02-003';
 // $pricetype = 'MD';
 
-if(isset($_GET['action']) && $_GET['action'] == 'excel')
-{
     $sql = "SELECT * FROM tblSKU WHERE brand LIKE '%$brand%' AND styleno LIKE '%$styleno%' AND pricetype LIKE '%$pricetype%'";
     $result = sqlsrv_query($nccc_conn, $sql);
 
@@ -67,5 +65,5 @@ if(isset($_GET['action']) && $_GET['action'] == 'excel')
    header("Pragma: no-cache");
    $xlsWriter->save('php://output');  
   exit;
-} 
+
 ?>

@@ -41,6 +41,8 @@
       </div><!-- /.container-fluid -->
     </section>
 
+    <div id="divload"></div>
+
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">

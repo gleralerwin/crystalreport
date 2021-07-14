@@ -127,7 +127,8 @@ function Nccc_RegExport()
         success: function(data)
         {
             console.log(data);
-            $('#display').append(data);
+            var response = JSON.parse(data);
+           $('divload').append(response);
         }
     });
 }
