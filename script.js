@@ -118,19 +118,20 @@ function Nccc_RegExport()
         url: 'ajax.php',
         type: 'post',
         dataType: 'text',
-        data:{
+        data: {
             brand:brand,
             styleno:styleno,
             pricetype:pricetype,
-            function: 'nccc_regexport',
+            function: 'nccc_regexportexcel'
         },
         success: function(data)
         {
             console.log(data);
-            window.location.href = './reports/nccc_reg_skulist_excel.php' + data;
+            $('#display').append(data);
         }
     });
 }
+
 
 //export nccc MD skulist
 function Nccc_MdExport()

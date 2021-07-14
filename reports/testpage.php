@@ -1,7 +1,3 @@
-<?php
-
-
-echo "downloaded successfully";
-
-
-?>
+<script>
+    alert('Downloaded Successfully');
+</script>

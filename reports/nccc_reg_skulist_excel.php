@@ -1,19 +1,17 @@
 <?php
-    include '../inc/nccc_db.php';
-    include '../PHPExcel/Classes/PHPExcel.php';
+include '../inc/nccc_db.php';
+include '../PHPExcel/Classes/PHPExcel.php';
+// include '../PHPExcel/Classes/PHPExcel/IOFactory.php';
+// include '../PHPExcel/Classes/PHPExcel/Writer/Excel5.php';
 
-    // include '../PHPExcel/Classes/PHPExcel/IOFactory.php';
-    // include '../PHPExcel/Classes/PHPExcel/Writer/Excel5.php';
+// $brand = 'NO APOLOGIES';
+// $styleno = 'NLT02-003';
+// $pricetype = 'MD';
 
-    // $brand = 'BOSSINI';
-    // $styleno = 'LLT01-145';
-    // $pricetype = 'REG';
-    
-    // $sql = "SELECT * FROM tblsku WHERE brand LIKE '%$brand%', styleno LIKE '%$styleno%', pricetype LIKE '%$pricetype%'  ";
-
-    // $result = sqlsrv_query($nccc_conn, $sql);
-
-    $result = isset($checkResult);
+if(isset($_GET['action']) && $_GET['action'] == 'excel')
+{
+    $sql = "SELECT * FROM tblSKU WHERE brand LIKE '%$brand%' AND styleno LIKE '%$styleno%' AND pricetype LIKE '%$pricetype%'";
+    $result = sqlsrv_query($nccc_conn, $sql);
 
     $resultPHPExcel	= new PHPExcel();
     $resultPHPExcel->getActiveSheet()->setCellValue('A1', 'Brand');
@@ -33,51 +31,41 @@
     $resultPHPExcel->getActiveSheet()->setCellValue('O1', 'EntryDate');
     $resultPHPExcel->getActiveSheet()->setCellValue('P1', 'PriceType');
 
-    $i = 2;
+   $i = 2;
 
-    while($item = sqlsrv_fetch_array($result)){
-        $resultPHPExcel->getActiveSheet()->setCellValue('A' . $i, $item['Brand']);
-        $resultPHPExcel->getActiveSheet()->setCellValue('B' . $i, $item['Descrip']);
-        $resultPHPExcel->getActiveSheet()->setCellValue('C' . $i, $item['StyleNo']);
-        $resultPHPExcel->getActiveSheet()->setCellValue('D' . $i, $item['BuyerCode']);
-        $resultPHPExcel->getActiveSheet()->setCellValue('E' . $i, $item['SKUType']);
-        $resultPHPExcel->getActiveSheet()->setCellValue('F' . $i, $item['VendorCode']);
-        $resultPHPExcel->getActiveSheet()->setCellValue('G' . $i, $item['SRP']);
-        $resultPHPExcel->getActiveSheet()->setCellValue('H' . $i, $item['UPC']);
-        $resultPHPExcel->getActiveSheet()->setCellValue('I' . $i, $item['UoM']);
-        $resultPHPExcel->getActiveSheet()->setCellValue('J' . $i, $item['SKU']);
-        $resultPHPExcel->getActiveSheet()->setCellValue('K' . $i, $item['Dept']);
-        $resultPHPExcel->getActiveSheet()->setCellValue('L' . $i, $item['SubDept']);
-        $resultPHPExcel->getActiveSheet()->setCellValue('M' . $i, $item['Class']);
-        $resultPHPExcel->getActiveSheet()->setCellValue('N' . $i, $item['SubClass']);
-        $resultPHPExcel->getActiveSheet()->setCellValue('O' . $i, $item['EntryDate']);
-        $resultPHPExcel->getActiveSheet()->setCellValue('P' . $i, $item['PriceType']);
-        $i ++;
-    }
+   while($item = sqlsrv_fetch_array($result)){
+       $resultPHPExcel->getActiveSheet()->setCellValue('A' . $i, $item['Brand']);
+       $resultPHPExcel->getActiveSheet()->setCellValue('B' . $i, $item['Descrip']);
+       $resultPHPExcel->getActiveSheet()->setCellValue('C' . $i, $item['StyleNo']);
+       $resultPHPExcel->getActiveSheet()->setCellValue('D' . $i, $item['BuyerCode']);
+       $resultPHPExcel->getActiveSheet()->setCellValue('E' . $i, $item['SKUType']);
+       $resultPHPExcel->getActiveSheet()->setCellValue('F' . $i, $item['VendorCode']);
+       $resultPHPExcel->getActiveSheet()->setCellValue('G' . $i, $item['SRP']);
+       $resultPHPExcel->getActiveSheet()->setCellValue('H' . $i, $item['UPC']);
+       $resultPHPExcel->getActiveSheet()->setCellValue('I' . $i, $item['UoM']);
+       $resultPHPExcel->getActiveSheet()->setCellValue('J' . $i, $item['SKU']);
+       $resultPHPExcel->getActiveSheet()->setCellValue('K' . $i, $item['Dept']);
+       $resultPHPExcel->getActiveSheet()->setCellValue('L' . $i, $item['SubDept']);
+       $resultPHPExcel->getActiveSheet()->setCellValue('M' . $i, $item['Class']);
+       $resultPHPExcel->getActiveSheet()->setCellValue('N' . $i, $item['SubClass']);
+       $resultPHPExcel->getActiveSheet()->setCellValue('O' . $i, $item['EntryDate']);
+       $resultPHPExcel->getActiveSheet()->setCellValue('P' . $i, $item['PriceType']);
+       $i ++;
+   }
 
-    $outputFileName = 'NCCC REG SKU LIST.xlsx';
-    $xlsWriter = new PHPExcel_Writer_Excel5($resultPHPExcel);
-    // ob_start();  ob_flush();
-    header("Content-Type: application/force-download");
-    header("Content-Type: application/octet-stream");
-    header("Content-Type: application/download");
-    header('Content-Disposition:inline;filename="'.$outputFileName.'"');
-    header("Content-Transfer-Encoding: binary");
-    header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
-    header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
-    header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
-    header("Pragma: no-cache");
-
-    $xlsWriter->save('php://output');
+   $outputFileName = 'NCCC REG SKU LIST.xlsx';
+   $xlsWriter = new PHPExcel_Writer_Excel5($resultPHPExcel);
+   // ob_start();  ob_flush();
+   header("Content-Type: application/force-download");
+   header("Content-Type: application/octet-stream");
+   header("Content-Type: application/download");
+   header('Content-Disposition:inline;filename="'.$outputFileName.'"');
+   header("Content-Transfer-Encoding: binary");
+   header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
+   header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
+   header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
+   header("Pragma: no-cache");
+   $xlsWriter->save('php://output');  
+  exit;
+} 
 ?>
-
-<div id="display"></div>
-
-<script>
-
-$(function (){
-    alert('Done');
-    window.location.href = 'nccc.php';
-});
-
-</script>
