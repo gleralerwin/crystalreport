@@ -115,24 +115,21 @@ function Nccc_RegExport()
     let pricetype = $('#pricetype').val();
 
     $.ajax({
-        url: 'ajax.php',
         type: 'post',
+        url: 'ajax.php',
         dataType: 'text',
-        data: {
-            brand:brand,
-            styleno:styleno,
-            pricetype:pricetype,
+        data:{
+            brand: brand,
+            styleno: styleno,
+            pricetype: pricetype,
             function: 'nccc_regexportexcel'
         },
         success: function(data)
         {
             console.log(data);
-            var response = JSON.parse(data);
-           $('divload').append(response);
         }
     });
 }
-
 
 //export nccc MD skulist
 function Nccc_MdExport()

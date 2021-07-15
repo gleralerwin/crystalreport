@@ -61,9 +61,11 @@ elseif($function == 'smBrandName')
 }
 elseif($function == 'nccc_regexportexcel')
 {
-    $brand = $_POST['brand'];
-    $styleno = $_POST['styleno'];
-    $pricetype = $_POST['pricetype'];
+    if(isset($_POST) ? $_POST : ''){
+        $brand = $_POST['brand'];
+        $styleno = $_POST['styleno'];
+        $pricetype = $_POST['pricetype'];
+    }
     nccc_regexportexcel($brand, $styleno, $pricetype);
 }
 // elseif($function == 'rdsPriceType')
@@ -462,7 +464,6 @@ function nccc_regexportexcel($brand, $styleno, $pricetype)
     header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
     header("Pragma: no-cache");
     $xlsWriter->save('php://output');  
-    exit;
 }
 
 //get by brand in vwMasterlistREG

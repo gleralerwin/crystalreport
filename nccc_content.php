@@ -41,8 +41,6 @@
       </div><!-- /.container-fluid -->
     </section>
 
-    <div id="divload"></div>
-
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
@@ -90,8 +88,8 @@
                     <button class="btn btn-md btn-primary form-control" onclick="ncccSearch()">Custom Search</button>
                   </div>
               </div>
-        </div>
-
+       </div>
+       
         <div class="row">
           <div class="col-12">
             <div class="card">
@@ -106,13 +104,14 @@
                 <span class="spinner-border spinner-border-sm"></span> Loading..
               </button>
 
-              <div id="display"></div>
+             <div id="divload"></div>   
 
               <table class="table table-bordered table-striped" style="width: 100%;">
 
               <button class="btn btn-bg btn-success float-right" onclick="Nccc_MdExport()">Export To Excel ( MD ) <i class="fa fa-download"></i></button>
               <button class="btn btn-bg btn-info float-right" onclick="Nccc_RegExport()" style="margin-right: 5px;">Export To Excel ( REG ) <i class="fa fa-download"></i></button>
-
+              <!-- <a class="btn btn-bg btn-warning float-right" style="margin-right: 5px;" href="./reports/nccc_reg_skulist_excel.php">Export To Excel ( REG ) </a> -->
+              
               <div id="dropdownSearch" style="display: none;">
                 <div class="dropdown">
                 <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
