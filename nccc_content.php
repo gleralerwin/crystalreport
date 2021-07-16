@@ -44,9 +44,6 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-
-      <div id="datadisplay"></div>  
-      
          <div id="ncccsearch" class="row" style="background-color: #F5FFFA; margin: 2px 2px 10px 2px; padding: 18px; border: 1px solid #A9A9A9;">
               <div class="col-sm-2">
                 <div class="form-group">
@@ -112,8 +109,8 @@
               <table class="table table-bordered table-striped" style="width: 100%;">
 
               <button class="btn btn-bg btn-success float-right" onclick="Nccc_MdExport()">Export To Excel ( MD ) <i class="fa fa-download"></i></button>
-              <button class="btn btn-bg btn-info float-right" onclick="Nccc_RegExport()" style="margin-right: 5px;">Export To Excel ( REG ) <i class="fa fa-download"></i></button>
-              <!-- <a class="btn btn-bg btn-warning float-right" style="margin-right: 5px;" href="./reports/nccc_reg_skulist_excel.php">Export To Excel ( REG ) </a> -->
+              <!-- <button class="btn btn-bg btn-info float-right" onclick="Nccc_RegExport()" style="margin-right: 5px;">Export To Excel ( REG ) <i class="fa fa-download"></i></button> -->
+              <a class="btn btn-bg btn-warning float-right" style="margin-right: 5px;" href="./reports/nccc_reg_skulist_excel.php">Export To Excel ( REG ) </a>
               
               <div id="dropdownSearch" style="display: none;">
                 <div class="dropdown">

@@ -114,23 +114,48 @@ function Nccc_RegExport()
     let styleno = $('#styleno').val();
     let pricetype = $('#pricetype').val();
 
+    // $.ajax({
+    //     type: 'post',
+    //     url: 'ajax.php',
+    //     dataType: 'text',
+    //     data:{
+    //         brand: brand,
+    //         styleno: styleno,
+    //         pricetype: pricetype,                                           
+    //         function: 'nccc_regexportexcel'
+    //     },
+    //     success: function(data)
+    //     {
+    //         console.log(data);
+    //     }
+    // });
+
+    // $.post('./reports/nccc_reg_skulist_excel.php',
+    // {
+    //     brand:brand, 
+    //     styleno:styleno, 
+    //     pricetype:pricetype
+    // },
+    // function(data, status){
+    //     console.log(data);
+    // });
+
     $.ajax({
         type: 'post',
-        url: 'ajax.php',
-        dataType: 'json',
+        url: './reports/nccc_reg_skulist_excel.php',
         data:{
-            brand: brand,
-            styleno: styleno,
-            pricetype: pricetype,                                           
-            function: 'nccc_regexportexcel'
+            brand:brand,
+            styleno:styleno,
+            pricetype:pricetype
         },
-        success: function(data)
+        success:function(data)
         {
             console.log(data);
-            alert(data);
         }
     });
+
 }
+Nccc_RegExport();
 
 //export nccc MD skulist
 function Nccc_MdExport()
