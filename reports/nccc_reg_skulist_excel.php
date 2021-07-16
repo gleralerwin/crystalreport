@@ -1,5 +1,4 @@
 <?php
-
 // include '../PHPExcel/Classes/PHPExcel/IOFactory.php';
 // include '../PHPExcel/Classes/PHPExcel/Writer/Excel5.php';
 
@@ -8,16 +7,17 @@
 // $styleno = 'BMT02-0002';
 // $pricetype = 'REG';
 
-if(isset($_POST) ? $_POST : '')
+if(isset($_POST['brand']) || isset($_POST['styleno']) || isset($_POST['pricetype']))
 {
     $brand = $_POST['brand'];
     $styleno = $_POST['styleno'];
     $pricetype = $_POST['pricetype'];
+}
 
     include '../inc/nccc_db.php';
     include '../PHPExcel/Classes/PHPExcel.php';
 
-    $sql = "SELECT * FROM tblSKU WHERE Brand LIKE '%$brand%' AND StyleNo LIKE '%$styleno%' AND PriceType LIKE '%$pricetype%' ";
+    $sql = "SELECT * FROM tblSKU WHERE brand LIKE '%$brand%' AND styleno LIKE '%$styleno%' AND pricetype LIKE '%$pricetype%' ";
     $result = sqlsrv_query($nccc_conn, $sql);
 
     $resultPHPExcel	= new PHPExcel();
@@ -73,9 +73,8 @@ if(isset($_POST) ? $_POST : '')
     header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
     header("Pragma: no-cache");
     $xlsWriter->save('php://output');  
-}
-?>
 
+?>
 <script>
 $(document).ready(function (){
     alert("Download Successfully");
