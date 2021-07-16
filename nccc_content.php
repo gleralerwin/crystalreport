@@ -44,6 +44,9 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
+
+      <div id="datadisplay"></div>  
+      
          <div id="ncccsearch" class="row" style="background-color: #F5FFFA; margin: 2px 2px 10px 2px; padding: 18px; border: 1px solid #A9A9A9;">
               <div class="col-sm-2">
                 <div class="form-group">
@@ -89,7 +92,7 @@
                   </div>
               </div>
        </div>
-       
+
         <div class="row">
           <div class="col-12">
             <div class="card">

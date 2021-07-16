@@ -117,16 +117,17 @@ function Nccc_RegExport()
     $.ajax({
         type: 'post',
         url: 'ajax.php',
-        dataType: 'text',
+        dataType: 'json',
         data:{
             brand: brand,
             styleno: styleno,
-            pricetype: pricetype,
+            pricetype: pricetype,                                           
             function: 'nccc_regexportexcel'
         },
         success: function(data)
         {
             console.log(data);
+            alert(data);
         }
     });
 }
