@@ -1,3 +1,4 @@
 <script>
-    alert('Downloaded Successfully');
+alert("Download Successfully");
+window.location.href = 'nccc.php';
 </script>

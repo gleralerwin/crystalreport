@@ -1,3 +1,5 @@
+"use strict";
+
 //nccc sku list
 function fetch_nccc_list()
 { 
@@ -115,21 +117,19 @@ function Nccc_RegExport()
     let pricetype = $('#pricetype').val();
 
     $.ajax({
-        type: 'post',
         url: 'ajax.php',
+        type: 'post',
         dataType: 'text',
         data:{
-            brand: brand,
-            styleno: styleno,
-            pricetype: pricetype,                                           
+            brand:brand,
+            styleno:styleno,
+            pricetype:pricetype,                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
             function: 'nccc_regexportexcel'
         },
         success: function(data)
         {
             console.log(data);
-            // alert(data);
-            var url = "./reports/nccc_reg_skulist_excel.php?";
-            window.location= url;
+            alert(data);
         }
     });
 }
@@ -433,4 +433,3 @@ function sm_getBrandName()
     });
 }
 sm_getBrandName();
-

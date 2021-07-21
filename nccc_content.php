@@ -41,6 +41,8 @@
       </div><!-- /.container-fluid -->
     </section>
 
+    <div id='display'></div>
+
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
@@ -85,7 +87,7 @@
               </div>
               <div class="col-sm-2" style="margin-top: 32px;">
                   <div class="form-group">
-                    <button class="btn btn-md btn-primary form-control" onclick="ncccSearch()">Custom Search</button>
+                    <button type="submit" name="ncccsearchbtn" class="btn btn-md btn-primary form-control" onclick="ncccSearch()">Custom Search</button>
                   </div>
               </div>
        </div>
@@ -112,18 +114,6 @@
               <button class="btn btn-bg btn-info float-right" onclick="Nccc_RegExport()" style="margin-right: 5px;">Export To Excel ( REG ) <i class="fa fa-download"></i></button>
               <!-- <a class="btn btn-bg btn-warning float-right" style="margin-right: 5px;" href="./reports/nccc_reg_skulist_excel.php">Export To Excel ( REG ) </a> -->
               
-              <div id="dropdownSearch" style="display: none;">
-                <div class="dropdown">
-                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-                <span class="caret"></span></button>
-                <ul class="dropdown-menu">
-                  <li><a href="#">HTML</a></li>
-                  <li><a href="#">CSS</a></li>
-                  <li><a href="#">JavaScript</a></li>
-                </ul>
-                </div>
-              </div>
-
               <br><br>
                 <thead>
                     <tr>
