@@ -62,7 +62,6 @@ elseif($function == 'smBrandName')
 }
 elseif($function == 'nccc_regexportexcel')
 {
-    
     $brand = $_POST['brand'];
     $styleno = $_POST['styleno'];
     $pricetype = $_POST['pricetype'];
@@ -466,8 +465,6 @@ function nccc_regexportexcel($brand, $styleno, $pricetype)
     header("Pragma: no-cache");
     header('Cache-Control: max-age=0');
     $xlsWriter->save('php://output');  
-    
-    echo $_SERVER["PHP_SELF"];
 }
 
 //get by brand in vwMasterlistREG

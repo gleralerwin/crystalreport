@@ -1,4 +1,6 @@
 <?php
+// error_reporting (E_ALL ^ E_NOTICE);
+
 // include '../PHPExcel/Classes/PHPExcel/IOFactory.php';
 // include '../PHPExcel/Classes/PHPExcel/Writer/Excel5.php';
 
@@ -7,13 +9,12 @@
 // $styleno = 'BMT02-0002';
 // $pricetype = 'REG';
 
-    if(isset($_POST) ? $_POST : '')
-    {
-        $brand = $_POST['Brand'];
-        $styleno = $_POST['StyleNo'];
-        $pricetype = $_POST['PriceType'];
-    }
+$brand = $_POST['brand'];
+$styleno = $_POST['styleno'];
+$pricetype = $_POST['pricetype'];
 
+if(isset($_POST) ? $_POST : '')
+{
     include '../inc/nccc_db.php';
     include '../PHPExcel/Classes/PHPExcel.php';
 
@@ -73,8 +74,7 @@
     header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
     header("Pragma: no-cache");
     $xlsWriter->save('php://output');  
-
-    header('Location : nccc.php');
+}
 ?>
 <!-- <script>
 $(document).ready(function (){
