@@ -110,45 +110,30 @@ sm_list();
 //     }    
 // }
 
-// function Nccc_RegExport()
-// {
-//     let brand = $('#brand').val();
-//     let styleno = $('#styleno').val();
-//     let pricetype = $('#pricetype').val();
-
-//     $.ajax({
-//         url: 'ajax.php',
-//         type: 'post',
-//         dataType: 'text',
-//         data:{
-//             brand:brand,
-//             styleno:styleno,
-//             pricetype:pricetype,
-//             function:'nccc_regexportexcel'
-//         },
-//         success: function(data)
-//         {
-//             console.log(data);
-//             alert(data);
-//         }
-//     });
-// }
-
 function Nccc_RegExport()
 {
     let brand = $('#brand').val();
     let styleno = $('#styleno').val();
     let pricetype = $('#pricetype').val();
 
-    $.post('./reports/nccc_reg_skulist_excel.php',{
-        brand:brand,
-        styleno:styleno,
-        pricetype:pricetype
-    },
-    function(data, status){
-        alert('Data: ' + data + '\status' + status);
+    $.ajax({
+        url: 'ajax.php',
+        type: 'post',
+        dataType: 'text',
+        data:{
+            brand:brand,
+            styleno:styleno,
+            pricetype:pricetype,
+            function:'nccc_regexportexcel'
+        },
+        success: function(data)
+        {
+            console.log(data);
+            window.location.href = './reports/nccc_reg_skulist_excel.php';
+        }
     });
 }
+
 
 //export nccc MD skulist
 function Nccc_MdExport()
@@ -322,7 +307,7 @@ function rdsSearch()
 {
     let brandname = $('#brandname').val();
     let styleno = $('#styleno').val();
-    let rds_pricetype = $('#rds_pricetype').val();
+    let pricetype = $('#pricetype').val();
 
     $.ajax({
         url: 'ajax.php',
@@ -331,7 +316,7 @@ function rdsSearch()
         data:{
             brandname:brandname,
             styleno:styleno,
-            rds_pricetype:rds_pricetype,
+            pricetype:pricetype,
             function: 'rdsSaveSearch'
         },
         beforeSend: function()

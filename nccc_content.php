@@ -41,11 +41,63 @@
       </div><!-- /.container-fluid -->
     </section>
 
-    <div id='display'></div>
-
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
+
+        <!-- Export to excel form -->
+        <form method="post" action="./reports/nccc_skulist_excel.php" id="ncccform">
+          <div class="row" style="background-color: #F5FFFA; margin: 2px 2px 10px 2px; padding: 18px; border: 1px solid #A9A9A9;">
+          <div class="col-sm-2">
+            <div class="form-group">
+                <label>Select Brand <em style="color: #696969;">( Required Field )</em></label>
+                <select name="brand" id="brand" class="form-control" onchange="ncccSearch()" required>
+                      <option value="0"> --- Brand Name --- </option>
+                      <option value="bossini">BOSSINI</option>
+                      <option value="cliffe">CLIFFE</option>
+                      <option value="crissa">CRISSA</option>
+                      <option value="crissa steps">CRISSA STEPS</option>
+                      <option value="dyse one">DYSE ONE</option>
+                      <option value="ego">EGO</option>
+                      <option value="freebie">FREEBIE</option>
+                      <option value="fubu">FUBU</option>
+                      <option value="fube girls">FUBU GIRLS</option>
+                      <option value="hotkiss">HOTKISS</option>
+                      <option value="hotkiss femme">HOTKISS FEMME</option>
+                      <option value="no aplologies">NO APOLOGIES</option>
+                      <option value="red girl">RED GIRL</option>
+                      <option value="unionbay">UNIONBAY</option>
+                </select>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-group">
+              <label>Select Price <em style="color: #696969;">( Required Field )</em></label>
+              <select name="pricetype" id="pricetype" class="form-control" onchange="ncccSearch()" required>
+                    <option value="0"> --- Price Type --- </option>
+                    <option value="reg">REGULAR</option>
+                    <option value="md">MARKDOWN</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-group">
+              <label>Style No.</label>
+              <input type="text" id="styleno" name="styleno" class="form-control">
+            </div>
+          </div>
+          <div class="col-sm-6" style="margin-top: 32px;">
+            <div class="form-group">
+            <button type="submit" name="submit" id="submit" class="btn btn-bg btn-success"> <i class="fa fa-download"></i>&nbsp;&nbsp;Export to Excel</button>
+
+            </div>
+          </div>
+
+        </form>
+        <!-- end export to excel -->
+
+        </div>
+         <!-- 
          <div id="ncccsearch" class="row" style="background-color: #F5FFFA; margin: 2px 2px 10px 2px; padding: 18px; border: 1px solid #A9A9A9;">
               <div class="col-sm-2">
                 <div class="form-group">
@@ -91,7 +143,7 @@
                   </div>
               </div>
        </div>
-
+        -->
         <div class="row">
           <div class="col-12">
             <div class="card">
@@ -106,12 +158,10 @@
                 <span class="spinner-border spinner-border-sm"></span> Loading..
               </button>
 
-             <div id="divload"></div>   
-
               <table class="table table-bordered table-striped" style="width: 100%;">
 
-              <button class="btn btn-bg btn-success float-right" onclick="Nccc_MdExport()">Export To Excel ( MD ) <i class="fa fa-download"></i></button>
-              <button class="btn btn-bg btn-info float-right" onclick="Nccc_RegExport()" style="margin-right: 5px;">Export To Excel ( REG ) <i class="fa fa-download"></i></button>
+              <!-- <button class="btn btn-bg btn-success float-right" onclick="Nccc_MdExport()">Export To Excel ( MD ) <i class="fa fa-download"></i></button> -->
+              <!-- <button class="btn btn-bg btn-info float-right" onclick="Nccc_RegExport()" style="margin-right: 5px;">Export To Excel ( REG ) <i class="fa fa-download"></i></button> -->
               <!-- <a class="btn btn-bg btn-warning float-right" style="margin-right: 5px;" href="./reports/nccc_reg_skulist_excel.php">Export To Excel ( REG ) </a> -->
               
               <br><br>
