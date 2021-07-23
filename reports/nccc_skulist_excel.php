@@ -1,9 +1,9 @@
 <?php
-// error_reporting(E_ALL);
-// ini_set('display_errors', TRUE);
-// ini_set('display_startup_errors', TRUE);
+error_reporting(E_ALL);
+ini_set('display_errors', TRUE);
+ini_set('display_startup_errors', TRUE);
 
-if(isset($_POST['submit']))
+if(isset($_POST['ncccbtn_export']))
 {
     $brand = $_POST['brand'];
     $styleno = $_POST['styleno'];

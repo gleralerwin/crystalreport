@@ -747,14 +747,12 @@ function rdsSaveSearch($brandname, $styleno, $pricetype)
 //sm customize search
 function smSaveSearch($brandname, $styleno, $pricetype)
 {
-    if($pricetype == 'REG')
+    if($pricetype == 'reg')
     {
         include './inc/sm_db.php';
-        $sql = "SELECT * FROM vwSMitems WHERE BrandName LIKE '%$brandname%' AND styleno LIKE '%$styleno%' ";
+        $sql = "SELECT * FROM vwSMitems WHERE BrandName LIKE '%$brandname%'";
         $result = sqlsrv_query($sm_conn, $sql);
 
-        if(isset($brandname))
-        {
            $i=1;
            while($row = sqlsrv_fetch_array($result))
            {
@@ -801,51 +799,51 @@ function smSaveSearch($brandname, $styleno, $pricetype)
             </tr>
             ';
            }
-        }
-        elseif(isset($styleno))
-        {
-            $i=1;
-            while($row = sqlsrv_fetch_array($result))
-            {
-             $vend_code = $row['vend_code'];
-             $reg = $row['REG'];
-             $brandname = $row['BrandName'];
-             $ap_type = $row['AP_Type'];
-             $dept = $row['dept'];
-             $subdept = $row['subdept'];
-             $class = $row['class'];
-             $subclass = $row['subclass'];
-             $styleno  = $row['styleno'];
-             $vendor_upc = $row['vendor_upc'];
-             $stkcode = $row['stk_code'];
-             $styledesc = $row['StyleDesc'];
-             $brandcode = $row['brand_code'];
 
-             echo '
-             <tr>
-                 <td>'.$i++.'</td>
-                 <td>'.$vend_code.'</td>
-                 <td>'.$dept.'</td>
-                 <td>'.$subdept.'</td>
-                 <td>'.$class.'</td>
-                 <td>'.$subclass.'</td>
-                 <td>'.$brandcode.'</td>
-                 <td>'.$styledesc.'</td>
-                 <td>'.$styleno.'</td>
-                 <td>'.$reg.'</td>
-                 <td>'.$vendor_upc.'</td>
-                 <td>'.$stkcode.'</td>
-                 <td>'.$brandname.'</td>
-                 <td>'.$ap_type.'</td>
-             </tr>
-             ';
-            }
-        }
+        // elseif(isset($styleno))
+        // {
+        //     $i=1;
+        //     while($row = sqlsrv_fetch_array($result))
+        //     {
+        //      $vend_code = $row['vend_code'];
+        //      $reg = $row['REG'];
+        //      $brandname = $row['BrandName'];
+        //      $ap_type = $row['AP_Type'];
+        //      $dept = $row['dept'];
+        //      $subdept = $row['subdept'];
+        //      $class = $row['class'];
+        //      $subclass = $row['subclass'];
+        //      $styleno  = $row['styleno'];
+        //      $vendor_upc = $row['vendor_upc'];
+        //      $stkcode = $row['stk_code'];
+        //      $styledesc = $row['StyleDesc'];
+        //      $brandcode = $row['brand_code'];
+
+        //      echo '
+        //      <tr>
+        //          <td>'.$i++.'</td>
+        //          <td>'.$vend_code.'</td>
+        //          <td>'.$dept.'</td>
+        //          <td>'.$subdept.'</td>
+        //          <td>'.$class.'</td>
+        //          <td>'.$subclass.'</td>
+        //          <td>'.$brandcode.'</td>
+        //          <td>'.$styledesc.'</td>
+        //          <td>'.$styleno.'</td>
+        //          <td>'.$reg.'</td>
+        //          <td>'.$vendor_upc.'</td>
+        //          <td>'.$stkcode.'</td>
+        //          <td>'.$brandname.'</td>
+        //          <td>'.$ap_type.'</td>
+        //      </tr>
+        //      ';
+        //     }
+        // }
     }
-    elseif($pricetype == 'MD')
+    elseif($pricetype == 'md')
     {
            include './inc/sm_db.php';
-           $sql = "SELECT * FROM vwSMitems WHERE BrandName LIKE '%$brandname%' AND styleno LIKE '%$styleno%' ";
+           $sql = "SELECT * FROM vwSMitems WHERE BrandName LIKE '%$brandname%'";
            $result = sqlsrv_query($sm_conn, $sql);
 
            $i=1;

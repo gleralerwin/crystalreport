@@ -50,7 +50,7 @@
           <div class="row" style="background-color: #F5FFFA; margin: 2px 2px 10px 2px; padding: 18px; border: 1px solid #A9A9A9;">
           <div class="col-sm-2">
             <div class="form-group">
-                <label>Select Brand <em style="color: #696969;">( Required Field )</em></label>
+                <label>Select Brand <em style="color: #808080;">( Required Field )</em></label>
                 <select name="brand" id="brand" class="form-control" onchange="ncccSearch()" required>
                       <option value="0"> --- Brand Name --- </option>
                       <option value="bossini">BOSSINI</option>
@@ -72,7 +72,7 @@
           </div>
           <div class="col-sm-2">
             <div class="form-group">
-              <label>Select Price <em style="color: #696969;">( Required Field )</em></label>
+              <label>Select Price <em style="color: #808080;">( Required Field )</em></label>
               <select name="pricetype" id="pricetype" class="form-control" onchange="ncccSearch()" required>
                     <option value="0"> --- Price Type --- </option>
                     <option value="reg">REGULAR</option>
@@ -88,7 +88,7 @@
           </div>
           <div class="col-sm-6" style="margin-top: 32px;">
             <div class="form-group">
-            <button type="submit" name="submit" id="submit" class="btn btn-bg btn-success"> <i class="fa fa-download"></i>&nbsp;&nbsp;Export to Excel</button>
+            <button type="submit" name="ncccbtn_export" id="ncccbtn_export" class="btn btn-bg btn-success" onclick="return confirm('Do you want to download in EXCEL file ?');"> <i class="fa fa-download"></i>&nbsp;&nbsp;Export to Excel</button>
 
             </div>
           </div>

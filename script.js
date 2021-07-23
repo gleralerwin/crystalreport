@@ -1,5 +1,3 @@
-"use strict";
-
 //nccc sku list
 function fetch_nccc_list()
 { 
@@ -95,20 +93,6 @@ function sm_list()
     });
 }
 sm_list();
-
-//export nccc REG skulist
-// function Nccc_RegExport()
-// {
-//     var retVal = confirm("Want To Download in Excel (REG) ?");
-//     if( retVal == true ) {
-//        window.location.href = './reports/nccc_reg_skulist_excel.php';
-//        return true;
-//     }
-//     else {
-//        window.location.href = 'nccc.php';
-//        return false;
-//     }    
-// }
 
 function Nccc_RegExport()
 {
@@ -371,7 +355,7 @@ function smSearch()
         {
             // console.log(data);
 
-            if(pricetype == 'REG')
+            if(pricetype == 'reg')
             {
                 $('#sm_regbrand_col').css('background-color', '#FFFF00');
                 $('#sm_regstyleno_col').css('background-color', '#FFFF00');
@@ -392,7 +376,7 @@ function smSearch()
                 $('#display_sm_reglist').empty();
                 $('#display_sm_reglist').append(data);
             }
-            else if(pricetype == 'MD')
+            else if(pricetype == 'md')
             {
                 $('#sm_mdstyleno_col').css('background-color', '#FFFF00');
                 $('#sm_mdirmsname_col').css('background-color', '#FFFF00');

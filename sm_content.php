@@ -52,22 +52,18 @@
           <div class="col-sm-2">
             <div class="form-group">
                 <label>Select Brand <em style="color: #696969;">( Required Field )</em></label>
-                <select name="brandname" id="brandname" class="form-control" required>
+                <select name="brandname" id="brandname" class="form-control" onchange="smSearch()" required>
                       <option value="0"> --- Brand Name --- </option>
-                      <option value="bossini">BOSSINI</option>
-                      <option value="cliffe">CLIFFE</option>
-                      <option value="crissa">CRISSA</option>
-                      <option value="crissa steps">CRISSA STEPS</option>
-                      <option value="dyse one">DYSE ONE</option>
-                      <option value="ego">EGO</option>
-                      <option value="freebie">FREEBIE</option>
-                      <option value="fubu">FUBU</option>
-                      <option value="fube girls">FUBU GIRLS</option>
-                      <option value="hotkiss">HOTKISS</option>
-                      <option value="hotkiss femme">HOTKISS FEMME</option>
-                      <option value="no aplologies">NO APOLOGIES</option>
-                      <option value="red girl">RED GIRL</option>
-                      <option value="unionbay">UNIONBAY</option>
+                      <option value="BOSSINI LADIES">BOSSINI LADIES</option>
+                      <option value="CRISSA">CRISSA</option>
+                      <option value="DYSE ONE">DYSE ONE</option>
+                      <option value="EGO">EGO</option>
+                      <option value="FUBU">FUBU </option>
+                      <option value="FUBU GIRLS">FUBU GIRLS</option>
+                      <option value="HOTKISS">HOTKISS</option>
+                      <option value="NO APOLOGIES">NO APOLOGIES</option>
+                      <option value="RED GIRL">RED GIRL</option>
+                      <option value="UNIONBAY">UNIONBAY</option>
                 </select>
             </div>
           </div>
@@ -75,7 +71,7 @@
           <div class="col-sm-2">
             <div class="form-group">
               <label>Select Price <em style="color: #696969;">( Required Field )</em></label>
-              <select name="pricetype" id="pricetype" class="form-control" required>
+              <select name="pricetype" id="pricetype" class="form-control" onchange="smSearch()" required>
                     <option value="0"> --- Price Type --- </option>
                     <option value="reg">REGULAR</option>
                     <option value="md">MARKDOWN</option>
@@ -92,7 +88,7 @@
 
           <div class="col-sm-6" style="margin-top: 32px;">
             <div class="form-group">
-            <button type="submit" name="submit" id="submit" class="btn btn-bg btn-success"> <i class="fa fa-download"></i>&nbsp;&nbsp;Export to Excel</button>
+            <button type="submit" name="submit" id="submit" class="btn btn-bg btn-success" onclick="return confirm('Do you want to download in EXCEL file ?');"> <i class="fa fa-download"></i>&nbsp;&nbsp;Export to Excel</button>
             </div>
           </div>
         </form>
@@ -108,7 +104,6 @@
                     <option value="BOSSINI LADIES">BOSSINI LADIES</option>
                     <option value="CRISSA">CRISSA</option>
                     <option value="DYSE ONE">DYSE ONE</option>
-
                     <option value="EGO">EGO</option>
                     <option value="FUBU">FUBU </option>
                     <option value="FUBU GIRLS">FUBU GIRLS</option>

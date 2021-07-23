@@ -92,7 +92,7 @@
 
           <div class="col-sm-6" style="margin-top: 32px;">
             <div class="form-group">
-            <button type="submit" name="submit" id="submit" class="btn btn-bg btn-success"> <i class="fa fa-download"></i>&nbsp;&nbsp;Export to Excel</button>
+            <button type="submit" name="submit" id="submit" class="btn btn-bg btn-success" onclick="return confirm('Do you want to download in EXCEL file ?');"> <i class="fa fa-download"></i>&nbsp;&nbsp;Export to Excel</button>
             </div>
           </div>
         </form>
