@@ -57,8 +57,9 @@ if($pricetype == 'reg')
 	$i ++;
     }
 
-    $outputFileName = 'RDS REG SKU LIST.xlsx';
+    $outputFileName = 'RDS REG SKU LIST.xls';
     $xlsWriter = new PHPExcel_Writer_Excel5($resultPHPExcel);
+    ob_end_clean();
     //ob_start();  ob_flush();
     header("Content-Type: application/force-download");
     header("Content-Type: application/octet-stream");
