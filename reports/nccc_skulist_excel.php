@@ -122,7 +122,7 @@ if($pricetype == 'md')
         $i ++;
     }
 
-    $outputFileName = 'NCCC MD SKU LIST.xlsx';
+    $outputFileName = 'NCCC MD SKU LIST.xls';
     $xlsWriter = new PHPExcel_Writer_Excel5($resultPHPExcel);
     // ob_start();  ob_flush();
     header("Content-Type: application/force-download");

@@ -118,7 +118,7 @@ if($pricetype == 'md')
 	$i ++;
     }
 
-    $outputFileName = 'RDS MD SKU LIST.xlsx';
+    $outputFileName = 'RDS MD SKU LIST.xls';
     $xlsWriter = new PHPExcel_Writer_Excel5($resultPHPExcel);
     //ob_start();  ob_flush();
     header("Content-Type: application/force-download");
