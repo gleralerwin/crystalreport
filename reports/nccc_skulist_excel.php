@@ -19,9 +19,9 @@ if($pricetype == 'reg')
     $result = sqlsrv_query($nccc_conn, $sql);
 
     $resultPHPExcel	= new PHPExcel();
-    $resultPHPExcel->getActiveSheet()->setCellValue('A1', 'Brand');
-    $resultPHPExcel->getActiveSheet()->setCellValue('B1', 'Descrip');
-    $resultPHPExcel->getActiveSheet()->setCellValue('C1', 'StyleNo');
+    $resultPHPExcel->getActiveSheet()->setCellValue('A1', 'StyleNo');
+    $resultPHPExcel->getActiveSheet()->setCellValue('B1', 'Brand');
+    $resultPHPExcel->getActiveSheet()->setCellValue('C1', 'Descrip');
     $resultPHPExcel->getActiveSheet()->setCellValue('D1', 'BuyerCode');
     $resultPHPExcel->getActiveSheet()->setCellValue('E1', 'SKUType');
     $resultPHPExcel->getActiveSheet()->setCellValue('F1', 'VendorCode');
@@ -39,9 +39,9 @@ if($pricetype == 'reg')
     $i = 2;
 
     while($item = sqlsrv_fetch_array($result)){
-        $resultPHPExcel->getActiveSheet()->setCellValue('A' . $i, $item['Brand']);
-        $resultPHPExcel->getActiveSheet()->setCellValue('B' . $i, $item['Descrip']);
-        $resultPHPExcel->getActiveSheet()->setCellValue('C' . $i, $item['StyleNo']);
+        $resultPHPExcel->getActiveSheet()->setCellValue('A' . $i, $item['StyleNo']);
+        $resultPHPExcel->getActiveSheet()->setCellValue('B' . $i, $item['Brand']);
+        $resultPHPExcel->getActiveSheet()->setCellValue('C' . $i, $item['Descrip']);
         $resultPHPExcel->getActiveSheet()->setCellValue('D' . $i, $item['BuyerCode']);
         $resultPHPExcel->getActiveSheet()->setCellValue('E' . $i, $item['SKUType']);
         $resultPHPExcel->getActiveSheet()->setCellValue('F' . $i, $item['VendorCode']);
@@ -83,9 +83,9 @@ if($pricetype == 'md')
     $result = sqlsrv_query($nccc_conn, $sql);
 
     $resultPHPExcel	= new PHPExcel();
-    $resultPHPExcel->getActiveSheet()->setCellValue('A1', 'Brand');
-    $resultPHPExcel->getActiveSheet()->setCellValue('B1', 'Descrip');
-    $resultPHPExcel->getActiveSheet()->setCellValue('C1', 'StyleNo');
+    $resultPHPExcel->getActiveSheet()->setCellValue('A1', 'StyleNo');
+    $resultPHPExcel->getActiveSheet()->setCellValue('B1', 'Brand');
+    $resultPHPExcel->getActiveSheet()->setCellValue('C1', 'Descrip');
     $resultPHPExcel->getActiveSheet()->setCellValue('D1', 'BuyerCode');
     $resultPHPExcel->getActiveSheet()->setCellValue('E1', 'SKUType');
     $resultPHPExcel->getActiveSheet()->setCellValue('F1', 'VendorCode');
@@ -103,9 +103,9 @@ if($pricetype == 'md')
     $i = 2;
 
     while($item = sqlsrv_fetch_array($result)){
-        $resultPHPExcel->getActiveSheet()->setCellValue('A' . $i, $item['Brand']);
-        $resultPHPExcel->getActiveSheet()->setCellValue('B' . $i, $item['Descrip']);
-        $resultPHPExcel->getActiveSheet()->setCellValue('C' . $i, $item['StyleNo']);
+        $resultPHPExcel->getActiveSheet()->setCellValue('A' . $i, $item['StyleNo']);
+        $resultPHPExcel->getActiveSheet()->setCellValue('B' . $i, $item['Brand']);
+        $resultPHPExcel->getActiveSheet()->setCellValue('C' . $i, $item['Descrip']);
         $resultPHPExcel->getActiveSheet()->setCellValue('D' . $i, $item['BuyerCode']);
         $resultPHPExcel->getActiveSheet()->setCellValue('E' . $i, $item['SKUType']);
         $resultPHPExcel->getActiveSheet()->setCellValue('F' . $i, $item['VendorCode']);

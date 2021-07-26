@@ -19,36 +19,36 @@ if($pricetype == 'reg')
 
     $resultPHPExcel	= new PHPExcel();
 
-    $resultPHPExcel->getActiveSheet()->setCellValue('A1', 'brandname');
-    $resultPHPExcel->getActiveSheet()->setCellValue('B1', 'vend_code');
-    $resultPHPExcel->getActiveSheet()->setCellValue('C1', 'dept');
-    $resultPHPExcel->getActiveSheet()->setCellValue('D1', 'subdept');
-    $resultPHPExcel->getActiveSheet()->setCellValue('E1', 'class');
-    $resultPHPExcel->getActiveSheet()->setCellValue('F1', 'subclass');
-    $resultPHPExcel->getActiveSheet()->setCellValue('G1', 'stk_code');
-    $resultPHPExcel->getActiveSheet()->setCellValue('H1', 'sm_upc');
-    $resultPHPExcel->getActiveSheet()->setCellValue('I1', 'styleno');
-    $resultPHPExcel->getActiveSheet()->setCellValue('J1', 'styledesc');
-    $resultPHPExcel->getActiveSheet()->setCellValue('K1', 'stylecolor');
-    $resultPHPExcel->getActiveSheet()->setCellValue('L1', 'stylesize');
+    $resultPHPExcel->getActiveSheet()->setCellValue('A1', 'styleno');
+    $resultPHPExcel->getActiveSheet()->setCellValue('B1', 'brandname');
+    $resultPHPExcel->getActiveSheet()->setCellValue('C1', 'styledesc');
+    $resultPHPExcel->getActiveSheet()->setCellValue('D1', 'stylecolor');
+    $resultPHPExcel->getActiveSheet()->setCellValue('E1', 'stylesize');
+    $resultPHPExcel->getActiveSheet()->setCellValue('F1', 'vend_code');
+    $resultPHPExcel->getActiveSheet()->setCellValue('G1', 'dept');
+    $resultPHPExcel->getActiveSheet()->setCellValue('H1', 'subdept');
+    $resultPHPExcel->getActiveSheet()->setCellValue('I1', 'class');
+    $resultPHPExcel->getActiveSheet()->setCellValue('J1', 'subclass');
+    $resultPHPExcel->getActiveSheet()->setCellValue('K1', 'stk_code');
+    $resultPHPExcel->getActiveSheet()->setCellValue('L1', 'sm_upc');
     $resultPHPExcel->getActiveSheet()->setCellValue('M1', 'reg');
     $resultPHPExcel->getActiveSheet()->setCellValue('N1', 'skudate');
 
     $i = 2;
 
     while($item = sqlsrv_fetch_array($result)){
-        $resultPHPExcel->getActiveSheet()->setCellValue('A' . $i, $item['BrandName']);
-        $resultPHPExcel->getActiveSheet()->setCellValue('B' . $i, $item['vend_code']);
-        $resultPHPExcel->getActiveSheet()->setCellValue('C' . $i, $item['dept']);
-        $resultPHPExcel->getActiveSheet()->setCellValue('D' . $i, $item['subdept']);
-        $resultPHPExcel->getActiveSheet()->setCellValue('E' . $i, $item['class']);
-        $resultPHPExcel->getActiveSheet()->setCellValue('F' . $i, $item['subclass']);
-        $resultPHPExcel->getActiveSheet()->setCellValue('G' . $i, $item['stk_code']);
-        $resultPHPExcel->getActiveSheet()->setCellValue('H' . $i, $item['sm_upc']);
-        $resultPHPExcel->getActiveSheet()->setCellValue('I' . $i, $item['styleno']);
-        $resultPHPExcel->getActiveSheet()->setCellValue('J' . $i, $item['StyleDesc']);
-        $resultPHPExcel->getActiveSheet()->setCellValue('K' . $i, $item['StyleColor']);
-        $resultPHPExcel->getActiveSheet()->setCellValue('L' . $i, $item['StyleSize']);
+        $resultPHPExcel->getActiveSheet()->setCellValue('A' . $i, $item['styleno']);
+        $resultPHPExcel->getActiveSheet()->setCellValue('B' . $i, $item['BrandName']);
+        $resultPHPExcel->getActiveSheet()->setCellValue('C' . $i, $item['StyleDesc']);
+        $resultPHPExcel->getActiveSheet()->setCellValue('D' . $i, $item['StyleColor']);
+        $resultPHPExcel->getActiveSheet()->setCellValue('E' . $i, $item['StyleSize']);
+        $resultPHPExcel->getActiveSheet()->setCellValue('F' . $i, $item['vend_code']);
+        $resultPHPExcel->getActiveSheet()->setCellValue('G' . $i, $item['dept']);
+        $resultPHPExcel->getActiveSheet()->setCellValue('H' . $i, $item['subdept']);
+        $resultPHPExcel->getActiveSheet()->setCellValue('I' . $i, $item['class']);
+        $resultPHPExcel->getActiveSheet()->setCellValue('J' . $i, $item['subclass']);
+        $resultPHPExcel->getActiveSheet()->setCellValue('K' . $i, $item['stk_code']);
+        $resultPHPExcel->getActiveSheet()->setCellValue('L' . $i, $item['sm_upc']);
         $resultPHPExcel->getActiveSheet()->setCellValue('M' . $i, $item['REG']);
         $resultPHPExcel->getActiveSheet()->setCellValue('N' . $i, $item['EntryDate']->format('Y/m/d'));
         $i ++;
