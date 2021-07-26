@@ -1,7 +1,7 @@
 <?php
-// error_reporting(E_ALL);
-// ini_set('display_errors', TRUE);
-// ini_set('display_startup_errors', TRUE);
+error_reporting(E_ALL);
+ini_set('display_errors', TRUE);
+ini_set('display_startup_errors', TRUE);
 
 if(isset($_POST['submit']))
 {
@@ -118,6 +118,7 @@ if($pricetype == 'md')
 
     $outputFileName = 'SM MD SKU LIST.xls';
     $xlsWriter = new PHPExcel_Writer_Excel5($resultPHPExcel);
+    ob_end_clean();
     //ob_start();  ob_flush();
     header("Content-Type: application/force-download");
     header("Content-Type: application/octet-stream");

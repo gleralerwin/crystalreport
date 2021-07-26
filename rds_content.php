@@ -54,20 +54,18 @@
                 <label>Select Brand <em style="color: #696969;">( Required Field )</em></label>
                 <select name="brandname" id="brandname" class="form-control" onchange="rdsSearch()" required>
                       <option value="0"> --- Brand Name --- </option>
-                      <option value="bossini">BOSSINI</option>
-                      <option value="cliffe">CLIFFE</option>
-                      <option value="crissa">CRISSA</option>
-                      <option value="crissa steps">CRISSA STEPS</option>
-                      <option value="dyse one">DYSE ONE</option>
-                      <option value="ego">EGO</option>
-                      <option value="freebie">FREEBIE</option>
-                      <option value="fubu">FUBU</option>
-                      <option value="fube girls">FUBU GIRLS</option>
-                      <option value="hotkiss">HOTKISS</option>
-                      <option value="hotkiss femme">HOTKISS FEMME</option>
-                      <option value="no aplologies">NO APOLOGIES</option>
-                      <option value="red girl">RED GIRL</option>
-                      <option value="unionbay">UNIONBAY</option>
+                      <option value="BOSSINI">BOSSINI</option>
+                      <option value="BSSNILD">BOSSINI LADIES</option>
+                      <option value="CRISA">CRISSA</option>
+                      <option value="CRISASTP">CRISSA STEPS</option>
+                      <option value="DYSE1">DYSE ONE</option>
+                      <option value="EGO">EGO</option>
+                      <option value="FUBU">FUBU</option>
+                      <option value="FUBUAC">FUBU ACCESSORIES</option>
+                      <option value="FUBULD">FUBU GIRLS</option>
+                      <option value="HOTKS">HOTKISS</option>
+                      <option value="NOAPL">NO APOLOGIES</option>
+                      <option value="RGIRL">RED GIRL</option>
                 </select>
             </div>
           </div>

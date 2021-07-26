@@ -1,7 +1,7 @@
 <?php
-// error_reporting(E_ALL);
-// ini_set('display_errors', TRUE);
-// ini_set('display_startup_errors', TRUE);
+error_reporting(E_ALL);
+ini_set('display_errors', TRUE);
+ini_set('display_startup_errors', TRUE);
 
 if(isset($_POST['submit']))
 {
@@ -15,7 +15,7 @@ if($pricetype == 'reg')
     include '../inc/rds_db.php';
     include '../PHPExcel/Classes/PHPExcel.php';
 
-    $sql = "SELECT * FROM vwMasterlistREG WHERE IRMSName LIKE '%$brand%' AND PriceType LIKE '%$pricetype%'";
+    $sql = "SELECT * FROM vwMasterlistREG WHERE BrandName LIKE '%$brand%' AND PriceType LIKE '%$pricetype%'";
     $result = sqlsrv_query($rds_conn, $sql);
 
     $resultPHPExcel	= new PHPExcel();
@@ -78,7 +78,7 @@ if($pricetype == 'md')
     include '../inc/rds_db.php';
     include '../PHPExcel/Classes/PHPExcel.php';
 
-    $sql = "SELECT * FROM vwMasterlistREG WHERE IRMSName LIKE '%$brand%' AND PriceType LIKE '%$pricetype%'";
+    $sql = "SELECT * FROM vwMasterlistMD WHERE BrandName LIKE '%$brand%' AND PriceType LIKE '%$pricetype%'";
     $result = sqlsrv_query($rds_conn, $sql);
 
     $resultPHPExcel	= new PHPExcel();
@@ -120,6 +120,7 @@ if($pricetype == 'md')
 
     $outputFileName = 'RDS MD SKU LIST.xls';
     $xlsWriter = new PHPExcel_Writer_Excel5($resultPHPExcel);
+    ob_end_clean();
     //ob_start();  ob_flush();
     header("Content-Type: application/force-download");
     header("Content-Type: application/octet-stream");
