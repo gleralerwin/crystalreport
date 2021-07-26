@@ -14,7 +14,7 @@ if($pricetype == 'reg')
     include '../inc/sm_db.php';
     include '../PHPExcel/Classes/PHPExcel.php';
 
-    $sql = "SELECT * FROM vwSMitems WHERE BrandName LIKE '%$brand%'";
+    $sql = "SELECT * FROM vwSMitems WHERE BrandName LIKE '%$brand%' ORDER BY(Brandname, styleno, Stylecolor, stylesize) ASC";
     $result = sqlsrv_query($sm_conn, $sql);
 
     $resultPHPExcel	= new PHPExcel();
@@ -76,7 +76,7 @@ if($pricetype == 'md')
     include '../inc/sm_db.php';
     include '../PHPExcel/Classes/PHPExcel.php';
 
-    $sql = "SELECT * FROM vwSMitems WHERE BrandName LIKE '%$brand%'";
+    $sql = "SELECT * FROM vwSMitems WHERE BrandName LIKE '%$brand%' ORDER BY(Brandname, styleno, Stylecolor, stylesize) ASC";
     $result = sqlsrv_query($sm_conn, $sql);
 
     $resultPHPExcel	= new PHPExcel();
